@@ -16,10 +16,10 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
 ## Table of Contents
 
 - [Classes](#classes)
-  - [CheckoutConfiguration class(#checkoutconfiguration-class)
-  - [CheckoutStyle class(#checkoutstyle-class)
-  - [AlertStyle class(#alertstyle-class)
-  - [CheckoutSheet class(#checkoutsheet-class)
+  - [CheckoutConfiguration class](#checkoutconfiguration-class)
+  - [CheckoutStyle class](#checkoutstyle-class)
+  - [AlertStyle class](#alertstyle-class)
+  - [CheckoutSheet class](#checkoutsheet-class)
 
 ## Classes
 
