@@ -1,0 +1,126 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name ReepayCheckoutSheet
+import Combine
+import DeveloperToolsSupport
+import Foundation
+@_exported import ReepayCheckoutSheet
+import Swift
+import SwiftUI
+import UIKit
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public protocol CheckoutStyleProtocol {
+  var mode: ReepayCheckoutSheet.Mode { get set }
+  var sheetHeightFraction: Swift.Double { get set }
+  var prefersGrabberVisible: Swift.Bool { get set }
+  var dismissable: Swift.Bool { get set }
+  var hasDismissButton: Swift.Bool { get set }
+  var dismissButtonColor: Swift.String { get set }
+  var dismissButtonIcon: Swift.String? { get set }
+  var bundleIdentifier: Swift.String? { get set }
+}
+public protocol AlertStyleProtocol {
+  var title: Swift.String { get set }
+  var message: Swift.String { get set }
+  var preferredStyle: UIKit.UIAlertController.Style { get set }
+  var dismissConfirmText: Swift.String { get set }
+  var dismissConfirmStyle: UIKit.UIAlertAction.Style { get set }
+  var dismissCancelText: Swift.String { get set }
+  var dismissCancelStyle: UIKit.UIAlertAction.Style { get set }
+}
+public struct AlertStyle : ReepayCheckoutSheet.AlertStyleProtocol {
+  public var title: Swift.String
+  public var message: Swift.String
+  public var preferredStyle: UIKit.UIAlertController.Style
+  public var dismissConfirmText: Swift.String
+  public var dismissConfirmStyle: UIKit.UIAlertAction.Style
+  public var dismissCancelText: Swift.String
+  public var dismissCancelStyle: UIKit.UIAlertAction.Style
+  public init()
+}
+public struct CheckoutStyle : ReepayCheckoutSheet.CheckoutStyleProtocol {
+  public var mode: ReepayCheckoutSheet.Mode
+  public var sheetHeightFraction: Swift.Double
+  public var prefersGrabberVisible: Swift.Bool
+  public var dismissable: Swift.Bool
+  public var dismissAlertStyle: ReepayCheckoutSheet.AlertStyle?
+  public var hasDismissButton: Swift.Bool
+  public var dismissButtonColor: Swift.String
+  public var dismissButtonIcon: Swift.String?
+  public var bundleIdentifier: Swift.String?
+  public init()
+}
+public protocol CheckoutConfigurationProtocol {
+  var sessionID: Swift.String { get set }
+  var acceptURL: Swift.String? { get set }
+  var cancelURL: Swift.String? { get set }
+  var checkoutStyle: ReepayCheckoutSheet.CheckoutStyle { get set }
+}
+public struct CheckoutConfiguration : ReepayCheckoutSheet.CheckoutConfigurationProtocol {
+  public var sessionID: Swift.String
+  public var acceptURL: Swift.String?
+  public var cancelURL: Swift.String?
+  public var checkoutStyle: ReepayCheckoutSheet.CheckoutStyle
+  public init?(sessionID: Swift.String, acceptURL: Swift.String? = nil, cancelURL: Swift.String? = nil, checkoutStyle: ReepayCheckoutSheet.CheckoutStyle? = .init())
+}
+public class CheckoutEventPublisher {
+  final public let acceptEventPublisher: Combine.PassthroughSubject<ReepayCheckoutSheet.CheckoutEvent, Swift.Never>
+  final public let cancelEventPublisher: Combine.PassthroughSubject<ReepayCheckoutSheet.CheckoutEvent, Swift.Never>
+  public init()
+  @objc deinit
+}
+public enum CheckoutState {
+  case accept
+  case cancel
+  public static func == (a: ReepayCheckoutSheet.CheckoutState, b: ReepayCheckoutSheet.CheckoutState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum TokenValidationError : Swift.Error {
+  case invalidSessionToken
+  public static func == (a: ReepayCheckoutSheet.TokenValidationError, b: ReepayCheckoutSheet.TokenValidationError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum Mode : Swift.String {
+  case mediumSheet
+  case largeSheet
+  case fullScreenCover
+  case mediumAndLargeSheet
+  case customSheet
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(iOS 15.0, *)
+public class CheckoutSheet {
+  public init(configuration: ReepayCheckoutSheet.CheckoutConfiguration)
+  @available(*, unavailable)
+  required public init?(coder: Foundation.NSCoder)
+  public func getCheckoutViewController() -> UIKit.UIViewController?
+  public func getCheckoutEventPublisher() -> ReepayCheckoutSheet.CheckoutEventPublisher
+  public func present()
+  public func dismiss()
+  public func destroy()
+  @objc deinit
+}
+public struct CheckoutEvent {
+  public var state: ReepayCheckoutSheet.CheckoutState
+  public var completionUrl: Swift.String
+}
+extension ReepayCheckoutSheet.CheckoutState : Swift.Equatable {}
+extension ReepayCheckoutSheet.CheckoutState : Swift.Hashable {}
+extension ReepayCheckoutSheet.TokenValidationError : Swift.Equatable {}
+extension ReepayCheckoutSheet.TokenValidationError : Swift.Hashable {}
+extension ReepayCheckoutSheet.Mode : Swift.Equatable {}
+extension ReepayCheckoutSheet.Mode : Swift.Hashable {}
+extension ReepayCheckoutSheet.Mode : Swift.RawRepresentable {}

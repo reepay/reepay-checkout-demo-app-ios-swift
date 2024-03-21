@@ -1,0 +1,11 @@
+framework module ReepayCheckoutSheet {
+  umbrella header "ReepayCheckoutSheet.h"
+  export *
+
+  module * { export * }
+}
+
+module ReepayCheckoutSheet.Swift {
+  header "ReepayCheckoutSheet-Swift.h"
+  requires objc
+}
