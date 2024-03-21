@@ -34,3 +34,6 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
 
 ### CheckoutSheet class
 [CheckoutSheet](https://optimize-docs.billwerk.com/docs/checkoutsheet-class)
+
+### Design your own Sheet
+[Custom sheet](https://optimize-docs.billwerk.com/docs/create-custom-sheet)
