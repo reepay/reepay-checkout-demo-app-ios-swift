@@ -20,11 +20,17 @@ struct MyNavigationView: View {
     var body: some View {
         NavigationView {
             SidebarView()
+            InitialView()
+        }.preferredColorScheme(.light)
+    }
+
+    struct InitialView: View {
+        var body: some View {
             ReepayContentView()
             if #available(iOS 16.4, *) {
                 MerchantContentView()
             }
-        }.preferredColorScheme(.light)
+        }
     }
 }
 
