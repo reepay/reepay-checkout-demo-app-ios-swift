@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B225B5A42BA89468009F3DDA /* ReepayCheckoutExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225B5A32BA89468009F3DDA /* ReepayCheckoutExampleApp.swift */; };
+		B225B5A62BA89468009F3DDA /* NewContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225B5A52BA89468009F3DDA /* NewContentView.swift */; };
+		B225B5A82BA8946B009F3DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B225B5A72BA8946B009F3DDA /* Assets.xcassets */; };
+		B225B5AB2BA8946B009F3DDA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B225B5AA2BA8946B009F3DDA /* Preview Assets.xcassets */; };
+		B225B5B32BA89EC7009F3DDA /* Color+HEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225B5B22BA89EC7009F3DDA /* Color+HEX.swift */; };
+		B225B5B62BA89FC3009F3DDA /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225B5B52BA89FC3009F3DDA /* SidebarView.swift */; };
+		B225B5B82BA8A002009F3DDA /* OldContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225B5B72BA8A002009F3DDA /* OldContentView.swift */; };
+		B225B5BA2BA8A08D009F3DDA /* UIVIewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225B5B92BA8A08D009F3DDA /* UIVIewControllerWrapper.swift */; };
+		B2D5665D2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5665C2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift */; };
+		B2D5666B2BAC78AE00B0DDFE /* CustomContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */; };
+		B2D566702BAC9BF800B0DDFE /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5666F2BAC9BF800B0DDFE /* SessionModel.swift */; };
+		B2D566722BAD905F00B0DDFE /* ReepayCheckoutSheet.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D5666D2BAC885E00B0DDFE /* ReepayCheckoutSheet.xcframework */; };
+		B2D566732BAD905F00B0DDFE /* ReepayCheckoutSheet.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2D5666D2BAC885E00B0DDFE /* ReepayCheckoutSheet.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B225B5C22BA8A0F9009F3DDA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B2D566732BAD905F00B0DDFE /* ReepayCheckoutSheet.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B225B5A02BA89468009F3DDA /* ReepayCheckoutExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReepayCheckoutExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B225B5A32BA89468009F3DDA /* ReepayCheckoutExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReepayCheckoutExampleApp.swift; sourceTree = "<group>"; };
+		B225B5A52BA89468009F3DDA /* NewContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContentView.swift; sourceTree = "<group>"; };
+		B225B5A72BA8946B009F3DDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B225B5AA2BA8946B009F3DDA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B225B5B22BA89EC7009F3DDA /* Color+HEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HEX.swift"; sourceTree = "<group>"; };
+		B225B5B52BA89FC3009F3DDA /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		B225B5B72BA8A002009F3DDA /* OldContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldContentView.swift; sourceTree = "<group>"; };
+		B225B5B92BA8A08D009F3DDA /* UIVIewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerWrapper.swift; sourceTree = "<group>"; };
+		B2D5665C2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCheckoutConfiguration.swift; sourceTree = "<group>"; };
+		B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentView.swift; sourceTree = "<group>"; };
+		B2D5666D2BAC885E00B0DDFE /* ReepayCheckoutSheet.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ReepayCheckoutSheet.xcframework; path = "../../reepay-ios-checkout-sheet/build/ReepayCheckoutSheet.xcframework"; sourceTree = "<group>"; };
+		B2D5666F2BAC9BF800B0DDFE /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B225B59D2BA89468009F3DDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2D566722BAD905F00B0DDFE /* ReepayCheckoutSheet.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B225B5972BA89468009F3DDA = {
+			isa = PBXGroup;
+			children = (
+				B225B5A22BA89468009F3DDA /* ReepayCheckoutExample */,
+				B225B5A12BA89468009F3DDA /* Products */,
+				B225B5BB2BA8A0DE009F3DDA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B225B5A12BA89468009F3DDA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B225B5A02BA89468009F3DDA /* ReepayCheckoutExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B225B5A22BA89468009F3DDA /* ReepayCheckoutExample */ = {
+			isa = PBXGroup;
+			children = (
+				B225B5A32BA89468009F3DDA /* ReepayCheckoutExampleApp.swift */,
+				B225B5B12BA89EB6009F3DDA /* Helpers */,
+				B225B5B42BA89F05009F3DDA /* Views */,
+				B2D566712BAC9DD300B0DDFE /* Models */,
+				B2D5666C2BAC790100B0DDFE /* Utils */,
+				B225B5A72BA8946B009F3DDA /* Assets.xcassets */,
+				B225B5A92BA8946B009F3DDA /* Preview Content */,
+			);
+			path = ReepayCheckoutExample;
+			sourceTree = "<group>";
+		};
+		B225B5A92BA8946B009F3DDA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B225B5AA2BA8946B009F3DDA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B225B5B12BA89EB6009F3DDA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B225B5B22BA89EC7009F3DDA /* Color+HEX.swift */,
+				B225B5B92BA8A08D009F3DDA /* UIVIewControllerWrapper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B225B5B42BA89F05009F3DDA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B225B5B52BA89FC3009F3DDA /* SidebarView.swift */,
+				B225B5B72BA8A002009F3DDA /* OldContentView.swift */,
+				B225B5A52BA89468009F3DDA /* NewContentView.swift */,
+				B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B225B5BB2BA8A0DE009F3DDA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2D5666D2BAC885E00B0DDFE /* ReepayCheckoutSheet.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B2D5666C2BAC790100B0DDFE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B2D5665C2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B2D566712BAC9DD300B0DDFE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B2D5666F2BAC9BF800B0DDFE /* SessionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B225B59F2BA89468009F3DDA /* ReepayCheckoutExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B225B5AE2BA8946B009F3DDA /* Build configuration list for PBXNativeTarget "ReepayCheckoutExample" */;
+			buildPhases = (
+				B225B59C2BA89468009F3DDA /* Sources */,
+				B225B59D2BA89468009F3DDA /* Frameworks */,
+				B225B59E2BA89468009F3DDA /* Resources */,
+				B225B5C22BA8A0F9009F3DDA /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReepayCheckoutExample;
+			productName = ReepayCheckoutExample;
+			productReference = B225B5A02BA89468009F3DDA /* ReepayCheckoutExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B225B5982BA89468009F3DDA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					B225B59F2BA89468009F3DDA = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = B225B59B2BA89468009F3DDA /* Build configuration list for PBXProject "ReepayCheckoutExample" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B225B5972BA89468009F3DDA;
+			productRefGroup = B225B5A12BA89468009F3DDA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B225B59F2BA89468009F3DDA /* ReepayCheckoutExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B225B59E2BA89468009F3DDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B225B5AB2BA8946B009F3DDA /* Preview Assets.xcassets in Resources */,
+				B225B5A82BA8946B009F3DDA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B225B59C2BA89468009F3DDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2D5666B2BAC78AE00B0DDFE /* CustomContentView.swift in Sources */,
+				B225B5B32BA89EC7009F3DDA /* Color+HEX.swift in Sources */,
+				B225B5B62BA89FC3009F3DDA /* SidebarView.swift in Sources */,
+				B225B5A62BA89468009F3DDA /* NewContentView.swift in Sources */,
+				B2D5665D2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift in Sources */,
+				B225B5B82BA8A002009F3DDA /* OldContentView.swift in Sources */,
+				B225B5BA2BA8A08D009F3DDA /* UIVIewControllerWrapper.swift in Sources */,
+				B225B5A42BA89468009F3DDA /* ReepayCheckoutExampleApp.swift in Sources */,
+				B2D566702BAC9BF800B0DDFE /* SessionModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B225B5AC2BA8946B009F3DDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B225B5AD2BA8946B009F3DDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B225B5AF2BA8946B009F3DDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEVELOPMENT_ASSET_PATHS = "\"ReepayCheckoutExample/Preview Content\"";
+				DEVELOPMENT_TEAM = XGLU324D57;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Reepay Checkout";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reepay.ReepayCheckoutExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B225B5B02BA8946B009F3DDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEVELOPMENT_ASSET_PATHS = "\"ReepayCheckoutExample/Preview Content\"";
+				DEVELOPMENT_TEAM = XGLU324D57;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Reepay Checkout";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reepay.ReepayCheckoutExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B225B59B2BA89468009F3DDA /* Build configuration list for PBXProject "ReepayCheckoutExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B225B5AC2BA8946B009F3DDA /* Debug */,
+				B225B5AD2BA8946B009F3DDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B225B5AE2BA8946B009F3DDA /* Build configuration list for PBXNativeTarget "ReepayCheckoutExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B225B5AF2BA8946B009F3DDA /* Debug */,
+				B225B5B02BA8946B009F3DDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B225B5982BA89468009F3DDA /* Project object */;
+}
