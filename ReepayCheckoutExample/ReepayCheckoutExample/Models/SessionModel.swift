@@ -14,7 +14,9 @@ class SessionModel: ObservableObject {
 
     init() {
         /// 1. Add Reepay Checkout session ID
-        id = "<reepay_session_id>"
+        id = "<reepay_checkout_session_id>"
+
+        /// 2. Add accept and cancel URLs of your Reepay Checkout session
         acceptURL = "https://sandbox.reepay.com/api/httpstatus/200/accept"
         cancelURL = "https://sandbox.reepay.com/api/httpstatus/200/cancel"
     }

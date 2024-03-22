@@ -48,7 +48,7 @@ struct MerchantContentView: View {
     var body: some View {
         ZStack {
             Color(hex: "006CFF")
-            CustomNewContentView()
+            CustomContentView()
         }
     }
 }

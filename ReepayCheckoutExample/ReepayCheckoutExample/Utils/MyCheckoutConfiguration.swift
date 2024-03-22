@@ -5,7 +5,6 @@
 //  Created by Johnny Ly on 19/03/2024.
 //
 
-import Foundation
 import ReepayCheckoutSheet
 
 class MyCheckoutConfiguration {

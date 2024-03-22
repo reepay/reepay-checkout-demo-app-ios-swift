@@ -5,7 +5,6 @@
 //  Created by Johnny Ly on 18/03/2024.
 //
 
-import Foundation
 import SwiftUI
 
 struct SidebarView: View {

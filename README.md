@@ -20,6 +20,7 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
   - [CheckoutStyle class](#checkoutstyle-class)
   - [AlertStyle class](#alertstyle-class)
   - [CheckoutSheet class](#checkoutsheet-class)
+  - [Customize your own sheet](#customize-your-own-sheet)
 
 ## Classes
 
@@ -35,5 +36,5 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
 ### CheckoutSheet class
 [CheckoutSheet](https://optimize-docs.billwerk.com/docs/checkoutsheet-class)
 
-### Design your own Sheet
+### Customize your own sheet
 [Custom sheet](https://optimize-docs.billwerk.com/docs/create-custom-sheet)

@@ -16,7 +16,7 @@
 		B225B5B82BA8A002009F3DDA /* OldContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225B5B72BA8A002009F3DDA /* OldContentView.swift */; };
 		B225B5BA2BA8A08D009F3DDA /* UIVIewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225B5B92BA8A08D009F3DDA /* UIVIewControllerWrapper.swift */; };
 		B2D5665D2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5665C2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift */; };
-		B2D5666B2BAC78AE00B0DDFE /* CustomNewContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5666A2BAC78AE00B0DDFE /* CustomNewContentView.swift */; };
+		B2D5666B2BAC78AE00B0DDFE /* CustomContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */; };
 		B2D5666E2BAC885E00B0DDFE /* ReepayCheckoutSheet.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D5666D2BAC885E00B0DDFE /* ReepayCheckoutSheet.xcframework */; };
 		B2D566702BAC9BF800B0DDFE /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5666F2BAC9BF800B0DDFE /* SessionModel.swift */; };
 /* End PBXBuildFile section */
@@ -45,7 +45,7 @@
 		B225B5B72BA8A002009F3DDA /* OldContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldContentView.swift; sourceTree = "<group>"; };
 		B225B5B92BA8A08D009F3DDA /* UIVIewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerWrapper.swift; sourceTree = "<group>"; };
 		B2D5665C2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCheckoutConfiguration.swift; sourceTree = "<group>"; };
-		B2D5666A2BAC78AE00B0DDFE /* CustomNewContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNewContentView.swift; sourceTree = "<group>"; };
+		B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentView.swift; sourceTree = "<group>"; };
 		B2D5666D2BAC885E00B0DDFE /* ReepayCheckoutSheet.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ReepayCheckoutSheet.xcframework; path = "../../reepay-ios-checkout-sheet/build/ReepayCheckoutSheet.xcframework"; sourceTree = "<group>"; };
 		B2D5666F2BAC9BF800B0DDFE /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,7 +116,7 @@
 				B225B5B52BA89FC3009F3DDA /* SidebarView.swift */,
 				B225B5B72BA8A002009F3DDA /* OldContentView.swift */,
 				B225B5A52BA89468009F3DDA /* NewContentView.swift */,
-				B2D5666A2BAC78AE00B0DDFE /* CustomNewContentView.swift */,
+				B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2D5666B2BAC78AE00B0DDFE /* CustomNewContentView.swift in Sources */,
+				B2D5666B2BAC78AE00B0DDFE /* CustomContentView.swift in Sources */,
 				B225B5B32BA89EC7009F3DDA /* Color+HEX.swift in Sources */,
 				B225B5B62BA89FC3009F3DDA /* SidebarView.swift in Sources */,
 				B225B5A62BA89468009F3DDA /* NewContentView.swift in Sources */,

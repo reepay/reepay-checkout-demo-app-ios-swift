@@ -10,7 +10,7 @@ import ReepayCheckoutSheet
 import SwiftUI
 
 @available(iOS 16.4, *)
-struct CustomNewContentView: View {
+struct CustomContentView: View {
     @State private var isShowingSheet = false
     @State private var isShowingFullscreen = false
     
@@ -41,40 +41,6 @@ struct CustomNewContentView: View {
         }
     }
 
-    private func setupSubscribers() {
-        checkoutSheet?.getCheckoutEventPublisher().cancelEventPublisher
-            .sink(receiveValue: { (event: CheckoutEvent) in
-                print("Received event: \(event.state)")
-                checkoutSheet?.dismiss()
-                self.showingAlert = true
-                self.checkoutState = event.state
-            })
-            .store(in: &cancelEventCancellables)
-        
-        checkoutSheet?.getCheckoutEventPublisher().acceptEventPublisher
-            .sink(receiveValue: { (event: CheckoutEvent) in
-                print("Received event: \(event.state)")
-                checkoutSheet?.dismiss()
-                self.showingAlert = true
-                self.checkoutState = event.state
-            })
-            .store(in: &acceptEventCancellables)
-        
-        checkoutSheet?.getCheckoutEventPublisher().closeEventPublisher
-            .sink(receiveValue: { (event: CheckoutEvent) in
-                print("Received event: \(event.state)")
-                self.showingAlert = true
-                self.checkoutState = event.state
-            })
-            .store(in: &closeEventCancellables)
-    }
-    
-    private func cancelSubscribers() {
-        acceptEventCancellables.removeAll()
-        cancelEventCancellables.removeAll()
-        closeEventCancellables.removeAll()
-    }
-    
     var body: some View {
         VStack {
             Spacer()
@@ -166,5 +132,42 @@ struct CustomNewContentView: View {
     
     func didDismiss() {
         showingAlert = true
+    }
+}
+
+@available(iOS 16.4, *)
+extension CustomContentView {
+    private func setupSubscribers() {
+        checkoutSheet?.getCheckoutEventPublisher().cancelEventPublisher
+            .sink(receiveValue: { (event: CheckoutEvent) in
+                print("Received event: \(event.state)")
+                checkoutSheet?.dismiss()
+                self.showingAlert = true
+                self.checkoutState = event.state
+            })
+            .store(in: &cancelEventCancellables)
+        
+        checkoutSheet?.getCheckoutEventPublisher().acceptEventPublisher
+            .sink(receiveValue: { (event: CheckoutEvent) in
+                print("Received event: \(event.state)")
+                checkoutSheet?.dismiss()
+                self.showingAlert = true
+                self.checkoutState = event.state
+            })
+            .store(in: &acceptEventCancellables)
+        
+        checkoutSheet?.getCheckoutEventPublisher().closeEventPublisher
+            .sink(receiveValue: { (event: CheckoutEvent) in
+                print("Received event: \(event.state)")
+                self.showingAlert = true
+                self.checkoutState = event.state
+            })
+            .store(in: &closeEventCancellables)
+    }
+    
+    private func removeSubscribers() {
+        acceptEventCancellables.removeAll()
+        cancelEventCancellables.removeAll()
+        closeEventCancellables.removeAll()
     }
 }

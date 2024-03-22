@@ -22,7 +22,7 @@ struct OldContentView: View {
 
     @StateObject private var sessionModel = SessionModel()
 
-    func prepareCheckoutSheet(id: String) {
+    func prepareCheckoutSheet() {
         MyCheckoutConfiguration.shared.setConfiguration(id: sessionModel.id)
         MyCheckoutConfiguration.shared.setAcceptUrl(url: sessionModel.acceptURL)
         MyCheckoutConfiguration.shared.setCancelUrl(url: sessionModel.cancelURL)
@@ -31,7 +31,7 @@ struct OldContentView: View {
         if let configuration = MyCheckoutConfiguration.shared.getConfiguration() {
             checkoutSheet = CheckoutSheet(configuration: configuration)
             setupSubscribers()
-            print("Prepared checkout for: \(id)")
+            print("Prepared checkout for: \(sessionModel.id)")
         } else {
             print("Error preparing checkout")
         }
@@ -42,9 +42,8 @@ struct OldContentView: View {
             Spacer()
             HStack {
                 Button(action: {
-                    prepareCheckoutSheet(id: sessionModel.id)
+                    prepareCheckoutSheet()
                     self.checkoutSheet?.present()
-                    setupSubscribers()
                 }) {
                     Label("Pay", systemImage: "creditcard.fill")
                         .padding()
@@ -61,14 +60,16 @@ struct OldContentView: View {
                   dismissButton: .default(Text("OK"), action: handleCheckoutStateClick))
         }
         .onAppear {
-            prepareCheckoutSheet(id: sessionModel.id)
+            prepareCheckoutSheet()
         }
     }
 
     func handleCheckoutStateClick() {
         showingAlert = false
     }
+}
 
+extension OldContentView {
     private func setupSubscribers() {
         checkoutSheet?.getCheckoutEventPublisher().cancelEventPublisher
             .sink(receiveValue: { (event: CheckoutEvent) in
@@ -91,7 +92,7 @@ struct OldContentView: View {
             .store(in: &closeEventCancellables)
     }
 
-    private func cancelSubscribers() {
+    private func removeSubscribers() {
         acceptEventCancellables.removeAll()
         cancelEventCancellables.removeAll()
         closeEventCancellables.removeAll()
