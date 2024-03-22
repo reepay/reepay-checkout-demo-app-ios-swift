@@ -21,6 +21,7 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
   - [AlertStyle class](#alertstyle-class)
   - [CheckoutSheet class](#checkoutsheet-class)
   - [Customize your own sheet](#customize-your-own-sheet)
+- [Demo](#demo)
 
 ## Classes
 
@@ -38,3 +39,6 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
 
 ### Customize your own sheet
 [Custom sheet](https://optimize-docs.billwerk.com/docs/create-custom-sheet)
+
+## Demo
+https://github.com/reepay/reepay-checkout-demo-app-ios-swift/assets/108516218/f70a7e8a-dcd4-470e-aeb2-165f390b7057
