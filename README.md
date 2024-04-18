@@ -40,5 +40,17 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
 ### Customize your own sheet
 [Custom sheet](https://optimize-docs.billwerk.com/docs/create-custom-sheet)
 
+### CheckoutState enum
+[CheckoutState](https://optimize-docs.billwerk.com/docs/checkoutstate-enum)
+
+### CheckoutEvent struct
+[CheckoutEvent](https://optimize-docs.billwerk.com/docs/checkoutevent-struct)
+
+### Mode enum
+[Mode](https://optimize-docs.billwerk.com/docs/mode-enum)
+
 ## Demo
 https://github.com/reepay/reepay-checkout-demo-app-ios-swift/assets/108516218/f70a7e8a-dcd4-470e-aeb2-165f390b7057
+
+https://github.com/reepay/reepay-checkout-demo-app-ios-swift/assets/108516218/fe1bcf59-2e0f-4f96-8cd2-8e9d18920773
+
