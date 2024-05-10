@@ -82,11 +82,19 @@ struct CustomContentView: View {
                onDismiss: didDismiss)
         {
             VStack {
-                Button("My dismiss button",
-                       action: {
-                           checkoutState = CheckoutState.close
-                           isShowingSheet.toggle()
-                       })
+                HStack {
+                    Button(
+                        action: {
+                            checkoutState = CheckoutState.close
+                            isShowingSheet.toggle()
+                        }) {
+                            HStack {
+                                Image(systemName: "xmark.circle")
+                                Text("Cancel")
+                            }
+                        }
+                    Spacer()
+                }.padding()
                 if let checkoutVC = self.checkoutSheet?.getCheckoutViewController() {
                     UIViewControllerWrapper(viewController: checkoutVC)
                 }
@@ -132,6 +140,7 @@ struct CustomContentView: View {
     
     func didDismiss() {
         showingAlert = true
+        checkoutState = CheckoutState.close // Set your own state to close, when your custom sheet dismisses
     }
 }
 
