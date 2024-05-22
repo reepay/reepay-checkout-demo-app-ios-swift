@@ -52,6 +52,19 @@ class MyCheckoutConfiguration {
         }
     }
 
+    func setOldCheckoutStyle() {
+        var checkoutStyle = CheckoutStyle()
+        checkoutStyle.mode = .mediumAndLargeSheet
+        checkoutStyle.dismissable = true
+        checkoutStyle.hasDismissButton = true
+        checkoutStyle.dismissButtonColor = "#2A3439"
+
+        if var configuration = configuration {
+            configuration.checkoutStyle = checkoutStyle
+            self.configuration = configuration
+        }
+    }
+
     func setAlertStyle() {
         var alertStyle = AlertStyle()
         alertStyle.title = "Close"

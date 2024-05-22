@@ -26,8 +26,6 @@ struct NewContentView: View {
 
     func prepareCheckoutSheet() {
         MyCheckoutConfiguration.shared.setConfiguration(id: sessionModel.id)
-        MyCheckoutConfiguration.shared.setAcceptUrl(url: sessionModel.acceptURL)
-        MyCheckoutConfiguration.shared.setCancelUrl(url: sessionModel.cancelURL)
         MyCheckoutConfiguration.shared.setCheckoutStyle()
         MyCheckoutConfiguration.shared.setAlertStyle()
 
@@ -78,12 +76,12 @@ extension NewContentView {
             self.eventPublisher = eventPublisher
             self.eventPublisher?
                 .sink(receiveValue: { (event: CheckoutEvent) in
-                    handleEvent(event: event)
+                    self.handleEvent(event: event)
                 })
                 .store(in: &eventCancellables)
         }
 
-        /// Store specific events:
+        /// Subscribe specific events:
         checkoutSheet?.getCheckoutEventPublisher().acceptEventPublisher
             .sink(receiveValue: { (_: CheckoutEvent) in })
             .store(in: &acceptEventCancellables)
@@ -96,6 +94,9 @@ extension NewContentView {
     }
 
     private func removeSubscribers() {
+        acceptEventCancellables.removeAll()
+        cancelEventCancellables.removeAll()
+        closeEventCancellables.removeAll()
         eventCancellables.removeAll()
         eventPublisher = nil
     }
