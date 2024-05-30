@@ -38,13 +38,12 @@ class MyCheckoutConfiguration {
         }
     }
 
-    func setCheckoutStyle() {
+    func setCheckoutStyle(mode: Mode?) {
         var checkoutStyle = CheckoutStyle()
-        checkoutStyle.mode = .customSheet
+        checkoutStyle.mode = mode ?? .customSheet
         checkoutStyle.sheetHeightFraction = 0.7
         checkoutStyle.dismissable = false
-        checkoutStyle.hasDismissButton = true
-        checkoutStyle.dismissButtonColor = "#DC5151"
+        checkoutStyle.hideHeader = true
 
         if var configuration = configuration {
             configuration.checkoutStyle = checkoutStyle
@@ -56,11 +55,26 @@ class MyCheckoutConfiguration {
         var checkoutStyle = CheckoutStyle()
         checkoutStyle.mode = .mediumAndLargeSheet
         checkoutStyle.dismissable = true
-        checkoutStyle.hasDismissButton = true
-        checkoutStyle.dismissButtonColor = "#2A3439"
 
         if var configuration = configuration {
             configuration.checkoutStyle = checkoutStyle
+            self.configuration = configuration
+        }
+    }
+
+    func setIconTextButtonStyle(type: ButtonType, buttonHorizontalPosition: HorizontalPosition, buttonVerticalPosition: VerticalPosition, iconHorizontalPosition: HorizontalPosition) {
+        var buttonStyle = ButtonStyle(type: type)
+        buttonStyle.bundleIdentifier = "com.reepay.ReepayCheckoutExample"
+        buttonStyle.iconName = "octagon-xmark"
+        buttonStyle.iconColor = "700000"
+        buttonStyle.iconPosition = iconHorizontalPosition
+        buttonStyle.titleColor = "0476ba"
+        buttonStyle.title = "Cancel payment"
+        buttonStyle.horizontalPosition = buttonHorizontalPosition
+        buttonStyle.verticalPosition = buttonVerticalPosition
+
+        if var configuration = configuration {
+            configuration.checkoutStyle.dismissButtonStyle = buttonStyle
             self.configuration = configuration
         }
     }

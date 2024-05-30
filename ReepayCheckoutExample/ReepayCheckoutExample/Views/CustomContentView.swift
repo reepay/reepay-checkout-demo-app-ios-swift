@@ -29,7 +29,7 @@ struct CustomContentView: View {
         MyCheckoutConfiguration.shared.setConfiguration(id: sessionModel.id)
         MyCheckoutConfiguration.shared.setAcceptUrl(url: sessionModel.acceptURL)
         MyCheckoutConfiguration.shared.setCancelUrl(url: sessionModel.cancelURL)
-        MyCheckoutConfiguration.shared.setCheckoutStyle()
+        MyCheckoutConfiguration.shared.setCheckoutStyle(mode: nil)
         MyCheckoutConfiguration.shared.setAlertStyle()
         
         if let configuration = MyCheckoutConfiguration.shared.getConfiguration() {
@@ -56,7 +56,7 @@ struct CustomContentView: View {
         }
         .alert(isPresented: $showingAlert) {
             Alert(title: Text("Checkout state"),
-                  message: Text("Event: \(self.checkoutState!.toString)"),
+                  message: Text("Event: \(self.checkoutState?.toString ?? "No CheckoutState")"),
                   dismissButton: .default(Text("OK"), action: handleCheckoutStateClick))
         }.onAppear {
             prepareCheckoutSheet(id: sessionModel.id)
@@ -98,7 +98,7 @@ struct CustomContentView: View {
                 if let checkoutVC = self.checkoutSheet?.getCheckoutViewController() {
                     UIViewControllerWrapper(viewController: checkoutVC)
                 }
-            }.presentationDetents([.fraction(0.6)])
+            }.presentationDetents([.fraction(0.8)])
         }
         .foregroundColor(.black)
         .frame(maxWidth: .infinity,
@@ -140,7 +140,7 @@ struct CustomContentView: View {
     
     func didDismiss() {
         showingAlert = true
-        checkoutState = CheckoutState.close // Set your own state to close, when your custom sheet dismisses
+        removeSubscribers()
     }
 }
 
@@ -151,8 +151,8 @@ extension CustomContentView {
             .sink(receiveValue: { (event: CheckoutEvent) in
                 print("Received event: \(event.state)")
                 checkoutSheet?.dismiss()
-                self.showingAlert = true
                 self.checkoutState = event.state
+                self.showingAlert = true
             })
             .store(in: &cancelEventCancellables)
         
@@ -160,16 +160,16 @@ extension CustomContentView {
             .sink(receiveValue: { (event: CheckoutEvent) in
                 print("Received event: \(event.state)")
                 checkoutSheet?.dismiss()
-                self.showingAlert = true
                 self.checkoutState = event.state
+                self.showingAlert = true
             })
             .store(in: &acceptEventCancellables)
         
         checkoutSheet?.getCheckoutEventPublisher().closeEventPublisher
             .sink(receiveValue: { (event: CheckoutEvent) in
                 print("Received event: \(event.state)")
-                self.showingAlert = true
                 self.checkoutState = event.state
+                self.showingAlert = true
             })
             .store(in: &closeEventCancellables)
     }
