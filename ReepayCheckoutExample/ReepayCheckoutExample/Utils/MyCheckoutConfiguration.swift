@@ -64,10 +64,12 @@ class MyCheckoutConfiguration {
 
     func setIconTextButtonStyle(type: ButtonType, buttonHorizontalPosition: HorizontalPosition, buttonVerticalPosition: VerticalPosition, iconHorizontalPosition: HorizontalPosition) {
         var buttonStyle = ButtonStyle(type: type)
-        buttonStyle.titleColor = "0476ba"
-        buttonStyle.title = "Cancel payment"
         buttonStyle.horizontalPosition = buttonHorizontalPosition
         buttonStyle.verticalPosition = buttonVerticalPosition
+
+        var textStyle = TextStyle(text: "Cancel payment", size: 15, weight: .semibold)
+        textStyle.color = "0476BA"
+        buttonStyle.textStyle = textStyle
 
         var iconStyle = IconStyle()
         iconStyle.bundleIdentifier = "com.reepay.ReepayCheckoutExample"
