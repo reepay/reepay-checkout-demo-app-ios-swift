@@ -19,6 +19,9 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
   - [CheckoutConfiguration class](#checkoutconfiguration-class)
   - [CheckoutStyle class](#checkoutstyle-class)
   - [AlertStyle class](#alertstyle-class)
+  - [ButtonStyle class](#buttonstyle-class)
+  - [IconStyle class](#iconstyle-class)
+  - [TextStyle class](#textstyle-class)
   - [CheckoutSheet class](#checkoutsheet-class)
   - [Customize your own sheet](#customize-your-own-sheet)
 - [Demo](#demo)
@@ -33,6 +36,15 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
 
 ### AlertStyle class
 [AlertStyle](https://optimize-docs.billwerk.com/docs/alertstyle-class)
+
+### ButtonStyle class
+[ButtonStyle](https://optimize-docs.billwerk.com/docs/buttonstyle-class)
+
+### IconStyle class
+[IconStyle](https://optimize-docs.billwerk.com/docs/iconstyle-class)
+
+### TextStyle class
+[TextStyle](https://optimize-docs.billwerk.com/docs/textstyle-class)
 
 ### CheckoutSheet class
 [CheckoutSheet](https://optimize-docs.billwerk.com/docs/checkoutsheet-class)
@@ -49,8 +61,15 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
 ### Mode enum
 [Mode](https://optimize-docs.billwerk.com/docs/mode-enum)
 
+### HorizontalPosition enum
+[HorizontalPosition](https://optimize-docs.billwerk.com/docs/horizontalposition-enum)
+
+### VerticalPosition enum
+[VerticalPosition](https://optimize-docs.billwerk.com/docs/verticalposition-enum)
+
 ## Demo
 https://github.com/reepay/reepay-checkout-demo-app-ios-swift/assets/108516218/f70a7e8a-dcd4-470e-aeb2-165f390b7057
 
 https://github.com/reepay/reepay-checkout-demo-app-ios-swift/assets/108516218/fe1bcf59-2e0f-4f96-8cd2-8e9d18920773
 
+https://github.com/reepay/reepay-checkout-demo-app-ios-swift/assets/108516218/53023471-fd76-4abd-abb5-bf722ebec13b

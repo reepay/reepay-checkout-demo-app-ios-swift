@@ -13,6 +13,8 @@ import SwiftUI
 struct NewContentView: View {
     @State var checkoutSheet: CheckoutSheet?
 
+    @State var eventPublisher: PassthroughSubject<CheckoutEvent, Never>?
+    @State var eventCancellables = Set<AnyCancellable>() /// All event types
     @State var acceptEventCancellables = Set<AnyCancellable>()
     @State var cancelEventCancellables = Set<AnyCancellable>()
     @State var closeEventCancellables = Set<AnyCancellable>()
@@ -20,14 +22,19 @@ struct NewContentView: View {
     @State private var showingAlert = false
     @State private var checkoutState: CheckoutState?
 
+    @State private var selectedDismissButtonVerticalPosition: VerticalPosition = .above
+    @State private var selectedDismissButtonHorizontalPosition: HorizontalPosition = .right
+    @State private var selectedDismissButtonType: ButtonType = .iconText
+    @State private var selectedDismissButtonIconHorizontalPosition: HorizontalPosition = .right
+    @State private var selectedSheetMode: Mode = .largeSheet
+
     @StateObject private var sessionModel = SessionModel()
 
     func prepareCheckoutSheet() {
         MyCheckoutConfiguration.shared.setConfiguration(id: sessionModel.id)
-        MyCheckoutConfiguration.shared.setAcceptUrl(url: sessionModel.acceptURL)
-        MyCheckoutConfiguration.shared.setCancelUrl(url: sessionModel.cancelURL)
-        MyCheckoutConfiguration.shared.setCheckoutStyle()
+        MyCheckoutConfiguration.shared.setCheckoutStyle(mode: selectedSheetMode)
         MyCheckoutConfiguration.shared.setAlertStyle()
+        MyCheckoutConfiguration.shared.setIconTextButtonStyle(type: selectedDismissButtonType, buttonHorizontalPosition: selectedDismissButtonHorizontalPosition, buttonVerticalPosition: selectedDismissButtonVerticalPosition, iconHorizontalPosition: selectedDismissButtonIconHorizontalPosition)
 
         if let configuration = MyCheckoutConfiguration.shared.getConfiguration() {
             checkoutSheet = CheckoutSheet(configuration: configuration)
@@ -38,18 +45,74 @@ struct NewContentView: View {
         }
     }
 
+    var configuration: some View {
+        List {
+            Section {
+                VStack {
+                    Text("Dismiss Button Type")
+                    Picker("", selection: $selectedDismissButtonType) {
+                        Text("Icon").tag(ButtonType.icon)
+                        Text("IconText").tag(ButtonType.iconText)
+                        Text("Text").tag(ButtonType.text)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+                VStack {
+                    Text("Dismiss Button Vertical Position")
+                    Picker("", selection: $selectedDismissButtonVerticalPosition) {
+                        Text("Above").tag(VerticalPosition.above)
+                        Text("Overlap").tag(VerticalPosition.overlap)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+                VStack {
+                    Text("Dismiss Button Horizontal Position")
+                    Picker("", selection: $selectedDismissButtonHorizontalPosition) {
+                        Text("Left").tag(HorizontalPosition.left)
+                        Text("Center").tag(HorizontalPosition.center)
+                        Text("Right").tag(HorizontalPosition.right)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+                VStack {
+                    Text("Dismiss Button Icon Position")
+                    Picker("", selection: $selectedDismissButtonIconHorizontalPosition) {
+                        Text("Left").tag(HorizontalPosition.left)
+                        Text("Center").tag(HorizontalPosition.center)
+                        Text("Right").tag(HorizontalPosition.right)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+                VStack {
+                    Text("Sheet Mode")
+                    Picker("", selection: $selectedSheetMode) {
+                        Text("Medium").tag(Mode.mediumSheet)
+                        Text("M & L").tag(Mode.mediumAndLargeSheet)
+                        Text("Large").tag(Mode.largeSheet)
+                        Text("Fullscreen").tag(Mode.fullScreenCover)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+            }
+        }
+        .listStyle(.plain)
+        .padding(EdgeInsets(top: 50, leading: 25, bottom: 0, trailing: 25))
+    }
+
     var body: some View {
         VStack {
+            configuration
             Button(action: {
                 prepareCheckoutSheet()
                 self.checkoutSheet?.present()
             }) {
-                Label("Betal", systemImage: "creditcard.fill")
+                Label("Open Checkout", systemImage: "creditcard.fill")
                     .padding()
                     .foregroundColor(Color(hex: "0476ba"))
                     .background(.white)
                     .cornerRadius(10)
             }
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
         }
         .alert(isPresented: $showingAlert) {
             Alert(title: Text("Checkout state"),
@@ -57,6 +120,8 @@ struct NewContentView: View {
                   dismissButton: .default(Text("OK"), action: handleCheckoutStateClick))
         }.onAppear {
             prepareCheckoutSheet()
+        }.onDisappear {
+            removeSubscribers()
         }
     }
 
@@ -67,30 +132,27 @@ struct NewContentView: View {
 
 extension NewContentView {
     private func setupSubscribers() {
-        checkoutSheet?.getCheckoutEventPublisher().cancelEventPublisher
-            .sink(receiveValue: { (event: CheckoutEvent) in
-                print("Received event: \(event.state)")
-                checkoutSheet?.dismiss()
-                self.showingAlert = true
-                self.checkoutState = event.state
-            })
-            .store(in: &cancelEventCancellables)
+        if eventPublisher == nil {
+            guard let eventPublisher = checkoutSheet?.getCheckoutEventPublisher().eventPublisher else {
+                fatalError("Could not get Checkout Event Publisher from SDK")
+            }
+            self.eventPublisher = eventPublisher
+            self.eventPublisher?
+                .sink(receiveValue: { (event: CheckoutEvent) in
+                    self.handleEvent(event: event)
+                })
+                .store(in: &eventCancellables)
+        }
 
+        /// Subscribe specific events:
         checkoutSheet?.getCheckoutEventPublisher().acceptEventPublisher
-            .sink(receiveValue: { (event: CheckoutEvent) in
-                print("Received event: \(event.state)")
-                checkoutSheet?.dismiss()
-                self.showingAlert = true
-                self.checkoutState = event.state
-            })
+            .sink(receiveValue: { (_: CheckoutEvent) in })
             .store(in: &acceptEventCancellables)
-
+        checkoutSheet?.getCheckoutEventPublisher().cancelEventPublisher
+            .sink(receiveValue: { (_: CheckoutEvent) in })
+            .store(in: &cancelEventCancellables)
         checkoutSheet?.getCheckoutEventPublisher().closeEventPublisher
-            .sink(receiveValue: { (event: CheckoutEvent) in
-                print("Received event: \(event.state)")
-                self.showingAlert = true
-                self.checkoutState = event.state
-            })
+            .sink(receiveValue: { (_: CheckoutEvent) in })
             .store(in: &closeEventCancellables)
     }
 
@@ -98,5 +160,33 @@ extension NewContentView {
         acceptEventCancellables.removeAll()
         cancelEventCancellables.removeAll()
         closeEventCancellables.removeAll()
+        eventCancellables.removeAll()
+        eventPublisher = nil
+    }
+
+    private func handleEvent(event: CheckoutEvent) {
+        print("Handling event: \(event.state)")
+        checkoutState = event.state
+
+        switch event.state {
+        case CheckoutState.`init`:
+            showingAlert = false
+            print("Checkout has initiated")
+        case CheckoutState.accept:
+            checkoutSheet?.dismiss()
+            showingAlert = true
+        case CheckoutState.cancel:
+            checkoutSheet?.dismiss()
+            showingAlert = true
+        case CheckoutState.close:
+            showingAlert = true
+        case CheckoutState.error:
+            showingAlert = true
+        }
+
+        /// Unsubscribe when events are final states
+        if event.state != .`init` {
+            removeSubscribers()
+        }
     }
 }
