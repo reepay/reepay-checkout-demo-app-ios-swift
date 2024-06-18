@@ -42,7 +42,7 @@ class MyCheckoutConfiguration {
         var checkoutStyle = CheckoutStyle()
         checkoutStyle.mode = mode ?? .customSheet
         checkoutStyle.sheetHeightFraction = 0.7
-        checkoutStyle.dismissable = false
+        checkoutStyle.sheetDismissable = .withAlertOnChanges
         checkoutStyle.hideHeader = true
 
         if var configuration = configuration {
@@ -54,7 +54,7 @@ class MyCheckoutConfiguration {
     func setOldCheckoutStyle() {
         var checkoutStyle = CheckoutStyle()
         checkoutStyle.mode = .mediumAndLargeSheet
-        checkoutStyle.dismissable = true
+        checkoutStyle.sheetDismissable = .always
 
         if var configuration = configuration {
             configuration.checkoutStyle = checkoutStyle
