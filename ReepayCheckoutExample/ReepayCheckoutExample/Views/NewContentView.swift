@@ -192,19 +192,28 @@ extension NewContentView {
             showingAlert = false
             print("Checkout has initiated")
         case CheckoutState.accept:
+            if let data = event.message.data, let invoice = data.invoice {
+                print("Invoice has been paid: \(invoice)")
+            }
             checkoutSheet?.dismiss()
             showingAlert = true
         case CheckoutState.cancel:
+            if let data = event.message.data, let sessionId = data.id {
+                print("Session has been cancelled by user: \(sessionId)")
+            }
             checkoutSheet?.dismiss()
             showingAlert = true
         case CheckoutState.close:
             showingAlert = false
         case CheckoutState.error:
+            if let data = event.message.data, let error = data.error {
+                print("Session has error: \(error)")
+            }
             showingAlert = true
         }
 
         /// Unsubscribe when events are final states
-        if event.state != .`init` {
+        if ![CheckoutState.`init`, CheckoutState.error].contains(event.state) {
             removeSubscribers()
         }
     }
