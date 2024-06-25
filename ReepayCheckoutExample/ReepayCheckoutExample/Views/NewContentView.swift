@@ -193,13 +193,13 @@ extension NewContentView {
             print("Checkout has initiated")
         case CheckoutState.accept:
             if let data = event.message.data, let invoice = data.invoice {
-                print("Invoice has been paid: \(invoice)")
+                print("Invoice with handle '\(invoice)' has been paid")
             }
             checkoutSheet?.dismiss()
             showingAlert = true
         case CheckoutState.cancel:
             if let data = event.message.data, let sessionId = data.id {
-                print("Session has been cancelled by user: \(sessionId)")
+                print("Session id '\(sessionId)' has been cancelled by user")
             }
             checkoutSheet?.dismiss()
             showingAlert = true
@@ -209,7 +209,9 @@ extension NewContentView {
             if let data = event.message.data, let error = data.error {
                 print("Session has error: \(error)")
             }
-            showingAlert = true
+            showingAlert = false
+        default:
+            break
         }
 
         /// Unsubscribe when events are final states
@@ -224,6 +226,8 @@ extension NewContentView {
         switch event.action {
         case .cardInputChange:
             print("Checkout card fields has been edited")
+        default:
+            print("Unknown user action")
         }
     }
 }
