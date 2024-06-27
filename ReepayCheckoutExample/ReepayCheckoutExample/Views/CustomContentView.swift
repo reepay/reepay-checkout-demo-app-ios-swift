@@ -16,10 +16,13 @@ struct CustomContentView: View {
     
     @State var checkoutSheet: CheckoutSheet?
     
+    @State var userEventPublisher: PassthroughSubject<UserEvent, Never>?
+    @State var userEventCancellables = Set<AnyCancellable>()
+
     @State var acceptEventCancellables = Set<AnyCancellable>()
     @State var cancelEventCancellables = Set<AnyCancellable>()
     @State var closeEventCancellables = Set<AnyCancellable>()
-    
+ 
     @State private var showingAlert = false
     @State private var checkoutState: CheckoutState?
     
@@ -27,8 +30,6 @@ struct CustomContentView: View {
 
     func prepareCheckoutSheet(id: String) {
         MyCheckoutConfiguration.shared.setConfiguration(id: sessionModel.id)
-        MyCheckoutConfiguration.shared.setAcceptUrl(url: sessionModel.acceptURL)
-        MyCheckoutConfiguration.shared.setCancelUrl(url: sessionModel.cancelURL)
         MyCheckoutConfiguration.shared.setCheckoutStyle(mode: nil)
         MyCheckoutConfiguration.shared.setAlertStyle()
         
@@ -172,11 +173,36 @@ extension CustomContentView {
                 self.showingAlert = true
             })
             .store(in: &closeEventCancellables)
+        
+        if userEventPublisher == nil {
+            guard let userEventPublisher = checkoutSheet?.getUserEventPublisher().eventPublisher else {
+                fatalError("Could not get User Event Publisher from SDK")
+            }
+            self.userEventPublisher = userEventPublisher
+            self.userEventPublisher?
+                .sink(receiveValue: { (event: UserEvent) in
+                    self.handleUserEvent(event: event)
+                })
+                .store(in: &userEventCancellables)
+        }
+    }
+    
+    private func handleUserEvent(event: UserEvent) {
+        print("Handling action: \(event.action)")
+
+        switch event.action {
+        case .cardInputChange:
+            print("Checkout card fields has been edited")
+            // TODO: create your own Alert to confirm dismissal of your sheet
+        }
     }
     
     private func removeSubscribers() {
         acceptEventCancellables.removeAll()
         cancelEventCancellables.removeAll()
         closeEventCancellables.removeAll()
+        userEventCancellables.removeAll()
+        
+        userEventPublisher = nil
     }
 }

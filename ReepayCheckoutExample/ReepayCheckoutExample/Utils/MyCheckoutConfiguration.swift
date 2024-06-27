@@ -17,25 +17,11 @@ class MyCheckoutConfiguration {
 
     func setConfiguration(id: String) {
         guard let configuration = CheckoutConfiguration(
-            sessionID: id
+            sessionId: id
         ) else {
             fatalError("Invalid session ID")
         }
         self.configuration = configuration
-    }
-
-    func setAcceptUrl(url: String) {
-        if var configuration = configuration, !url.isEmpty {
-            configuration.acceptURL = url
-            self.configuration = configuration
-        }
-    }
-
-    func setCancelUrl(url: String) {
-        if var configuration = configuration, !url.isEmpty {
-            configuration.cancelURL = url
-            self.configuration = configuration
-        }
     }
 
     func setCheckoutStyle(mode: Mode?) {
@@ -67,7 +53,7 @@ class MyCheckoutConfiguration {
         buttonStyle.horizontalPosition = buttonHorizontalPosition
         buttonStyle.verticalPosition = buttonVerticalPosition
 
-        var textStyle = TextStyle(text: "Cancel payment", size: 15, weight: .semibold)
+        var textStyle = TextStyle(text: "Close payment", size: 15, weight: .semibold)
         textStyle.color = "0476BA"
         buttonStyle.textStyle = textStyle
 

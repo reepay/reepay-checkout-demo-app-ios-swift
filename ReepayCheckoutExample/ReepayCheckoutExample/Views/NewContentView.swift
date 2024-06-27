@@ -121,10 +121,6 @@ struct NewContentView: View {
             Alert(title: Text("Checkout state"),
                   message: Text("Event: \(self.checkoutState!.toString)"),
                   dismissButton: .default(Text("OK"), action: handleCheckoutStateClick))
-        }.onAppear {
-            prepareCheckoutSheet()
-        }.onDisappear {
-            removeSubscribers()
         }
     }
 
@@ -210,13 +206,13 @@ extension NewContentView {
                 print("Session has error: \(error)")
             }
             showingAlert = false
-        default:
-            break
         }
 
-        /// Unsubscribe when events are final states
+        /// Remove the references when events are final states
         if ![CheckoutState.`init`, CheckoutState.error].contains(event.state) {
             removeSubscribers()
+            checkoutSheet = nil
+            print("🏁 - Final state: CheckoutState.\(event.state)")
         }
     }
 
@@ -226,8 +222,6 @@ extension NewContentView {
         switch event.action {
         case .cardInputChange:
             print("Checkout card fields has been edited")
-        default:
-            print("Unknown user action")
         }
     }
 }
