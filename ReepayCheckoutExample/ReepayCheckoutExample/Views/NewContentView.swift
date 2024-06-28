@@ -13,8 +13,11 @@ import SwiftUI
 struct NewContentView: View {
     @State var checkoutSheet: CheckoutSheet?
 
-    @State var eventPublisher: PassthroughSubject<CheckoutEvent, Never>?
-    @State var eventCancellables = Set<AnyCancellable>() /// All event types
+    @State var userEventPublisher: PassthroughSubject<UserEvent, Never>?
+    @State var userEventCancellables = Set<AnyCancellable>()
+
+    @State var checkoutEventPublisher: PassthroughSubject<CheckoutEvent, Never>?
+    @State var checkoutEventCancellables = Set<AnyCancellable>() /// All checkout event types
     @State var acceptEventCancellables = Set<AnyCancellable>()
     @State var cancelEventCancellables = Set<AnyCancellable>()
     @State var closeEventCancellables = Set<AnyCancellable>()
@@ -118,10 +121,6 @@ struct NewContentView: View {
             Alert(title: Text("Checkout state"),
                   message: Text("Event: \(self.checkoutState!.toString)"),
                   dismissButton: .default(Text("OK"), action: handleCheckoutStateClick))
-        }.onAppear {
-            prepareCheckoutSheet()
-        }.onDisappear {
-            removeSubscribers()
         }
     }
 
@@ -132,19 +131,19 @@ struct NewContentView: View {
 
 extension NewContentView {
     private func setupSubscribers() {
-        if eventPublisher == nil {
-            guard let eventPublisher = checkoutSheet?.getCheckoutEventPublisher().eventPublisher else {
+        if checkoutEventPublisher == nil {
+            guard let checkoutEventPublisher = checkoutSheet?.getCheckoutEventPublisher().eventPublisher else {
                 fatalError("Could not get Checkout Event Publisher from SDK")
             }
-            self.eventPublisher = eventPublisher
-            self.eventPublisher?
+            self.checkoutEventPublisher = checkoutEventPublisher
+            self.checkoutEventPublisher?
                 .sink(receiveValue: { (event: CheckoutEvent) in
                     self.handleEvent(event: event)
                 })
-                .store(in: &eventCancellables)
+                .store(in: &checkoutEventCancellables)
         }
 
-        /// Subscribe specific events:
+        /// Subscribe specific checkut events:
         checkoutSheet?.getCheckoutEventPublisher().acceptEventPublisher
             .sink(receiveValue: { (_: CheckoutEvent) in })
             .store(in: &acceptEventCancellables)
@@ -154,14 +153,30 @@ extension NewContentView {
         checkoutSheet?.getCheckoutEventPublisher().closeEventPublisher
             .sink(receiveValue: { (_: CheckoutEvent) in })
             .store(in: &closeEventCancellables)
+
+        /// Subscribe user events
+        if userEventPublisher == nil {
+            guard let userEventPublisher = checkoutSheet?.getUserEventPublisher().eventPublisher else {
+                fatalError("Could not get User Event Publisher from SDK")
+            }
+            self.userEventPublisher = userEventPublisher
+            self.userEventPublisher?
+                .sink(receiveValue: { (event: UserEvent) in
+                    self.handleUserEvent(event: event)
+                })
+                .store(in: &userEventCancellables)
+        }
     }
 
     private func removeSubscribers() {
         acceptEventCancellables.removeAll()
         cancelEventCancellables.removeAll()
         closeEventCancellables.removeAll()
-        eventCancellables.removeAll()
-        eventPublisher = nil
+        checkoutEventCancellables.removeAll()
+        checkoutEventPublisher = nil
+
+        userEventCancellables.removeAll()
+        userEventPublisher = nil
     }
 
     private func handleEvent(event: CheckoutEvent) {
@@ -173,20 +188,40 @@ extension NewContentView {
             showingAlert = false
             print("Checkout has initiated")
         case CheckoutState.accept:
+            if let data = event.message.data, let invoice = data.invoice {
+                print("Invoice with handle '\(invoice)' has been paid")
+            }
             checkoutSheet?.dismiss()
             showingAlert = true
         case CheckoutState.cancel:
+            if let data = event.message.data, let sessionId = data.id {
+                print("Session id '\(sessionId)' has been cancelled by user")
+            }
             checkoutSheet?.dismiss()
             showingAlert = true
         case CheckoutState.close:
-            showingAlert = true
+            showingAlert = false
         case CheckoutState.error:
-            showingAlert = true
+            if let data = event.message.data, let error = data.error {
+                print("Session has error: \(error)")
+            }
+            showingAlert = false
         }
 
-        /// Unsubscribe when events are final states
-        if event.state != .`init` {
+        /// Remove the references when events are final states
+        if ![CheckoutState.`init`, CheckoutState.error].contains(event.state) {
             removeSubscribers()
+            checkoutSheet = nil
+            print("🏁 - Final state: CheckoutState.\(event.state)")
+        }
+    }
+
+    private func handleUserEvent(event: UserEvent) {
+        print("Handling action: \(event.action)")
+
+        switch event.action {
+        case .cardInputChange:
+            print("Checkout card fields has been edited")
         }
     }
 }
