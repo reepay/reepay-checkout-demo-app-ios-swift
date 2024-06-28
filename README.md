@@ -25,10 +25,10 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
 [Classes](https://optimize-docs.billwerk.com/docs/classes)
 
 ## Structs
-[Structs](https://optimize-docs.billwerk.com/docs/checkoutstyle-class)
+[Structs](https://optimize-docs.billwerk.com/docs/structs)
 
 ## Enums
-[Enums](https://optimize-docs.billwerk.com/docs/alertstyle-class)
+[Enums](https://optimize-docs.billwerk.com/docs/enums)
 
 ## Customize your own sheet
 [Custom sheet](https://optimize-docs.billwerk.com/docs/create-custom-sheet)
