@@ -28,7 +28,7 @@ class MyCheckoutConfiguration {
         var checkoutStyle = CheckoutStyle()
         checkoutStyle.mode = mode ?? .customSheet
         checkoutStyle.sheetHeightFraction = 0.7
-        checkoutStyle.sheetDismissable = .withAlertOnChanges
+        checkoutStyle.sheetDismissible = .withAlertOnChanges
         checkoutStyle.hideHeader = true
 
         if var configuration = configuration {
@@ -40,7 +40,7 @@ class MyCheckoutConfiguration {
     func setOldCheckoutStyle() {
         var checkoutStyle = CheckoutStyle()
         checkoutStyle.mode = .mediumAndLargeSheet
-        checkoutStyle.sheetDismissable = .always
+        checkoutStyle.sheetDismissible = .always
 
         if var configuration = configuration {
             configuration.checkoutStyle = checkoutStyle
@@ -53,7 +53,10 @@ class MyCheckoutConfiguration {
         buttonStyle.horizontalPosition = buttonHorizontalPosition
         buttonStyle.verticalPosition = buttonVerticalPosition
 
-        var textStyle = TextStyle(text: "Close payment", size: 15, weight: .semibold)
+        // Default font:
+        // var textStyle = TextStyle(text: "Close payment", size: 15, weight: .semibold)
+        // Custom font:
+        var textStyle = TextStyle(text: "Close payment", fontName: "ChakraPetch-Regular", size: nil)
         textStyle.color = "0476BA"
         buttonStyle.textStyle = textStyle
 
