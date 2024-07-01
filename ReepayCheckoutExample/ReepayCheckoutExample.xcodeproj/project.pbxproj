@@ -18,6 +18,9 @@
 		B2D5665D2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5665C2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift */; };
 		B2D5666B2BAC78AE00B0DDFE /* CustomContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */; };
 		B2D566702BAC9BF800B0DDFE /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5666F2BAC9BF800B0DDFE /* SessionModel.swift */; };
+		B2DA780D2C32A21100E354D5 /* ChakraPetch-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2DA780A2C32A21100E354D5 /* ChakraPetch-Regular.ttf */; };
+		B2DA780E2C32A21100E354D5 /* ChakraPetch-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2DA780B2C32A21100E354D5 /* ChakraPetch-Light.ttf */; };
+		B2DA780F2C32A21100E354D5 /* ChakraPetch-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2DA780C2C32A21100E354D5 /* ChakraPetch-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +49,10 @@
 		B2D5665C2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCheckoutConfiguration.swift; sourceTree = "<group>"; };
 		B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentView.swift; sourceTree = "<group>"; };
 		B2D5666F2BAC9BF800B0DDFE /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
+		B2DA78092C32A1C200E354D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B2DA780A2C32A21100E354D5 /* ChakraPetch-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChakraPetch-Regular.ttf"; sourceTree = "<group>"; };
+		B2DA780B2C32A21100E354D5 /* ChakraPetch-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChakraPetch-Light.ttf"; sourceTree = "<group>"; };
+		B2DA780C2C32A21100E354D5 /* ChakraPetch-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChakraPetch-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +86,14 @@
 		B225B5A22BA89468009F3DDA /* ReepayCheckoutExample */ = {
 			isa = PBXGroup;
 			children = (
+				B2DA78092C32A1C200E354D5 /* Info.plist */,
 				B225B5A32BA89468009F3DDA /* ReepayCheckoutExampleApp.swift */,
 				B225B5B12BA89EB6009F3DDA /* Helpers */,
 				B225B5B42BA89F05009F3DDA /* Views */,
 				B2D566712BAC9DD300B0DDFE /* Models */,
 				B2D5666C2BAC790100B0DDFE /* Utils */,
 				B225B5A72BA8946B009F3DDA /* Assets.xcassets */,
+				B2DA78082C32A15300E354D5 /* Fonts */,
 				B225B5A92BA8946B009F3DDA /* Preview Content */,
 			);
 			path = ReepayCheckoutExample;
@@ -139,6 +148,16 @@
 				B2D5666F2BAC9BF800B0DDFE /* SessionModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B2DA78082C32A15300E354D5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B2DA780C2C32A21100E354D5 /* ChakraPetch-Bold.ttf */,
+				B2DA780B2C32A21100E354D5 /* ChakraPetch-Light.ttf */,
+				B2DA780A2C32A21100E354D5 /* ChakraPetch-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +223,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2DA780E2C32A21100E354D5 /* ChakraPetch-Light.ttf in Resources */,
+				B2DA780F2C32A21100E354D5 /* ChakraPetch-Bold.ttf in Resources */,
 				B225B5AB2BA8946B009F3DDA /* Preview Assets.xcassets in Resources */,
 				B225B5A82BA8946B009F3DDA /* Assets.xcassets in Resources */,
+				B2DA780D2C32A21100E354D5 /* ChakraPetch-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +385,7 @@
 				DEVELOPMENT_TEAM = XGLU324D57;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ReepayCheckoutExample/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Reepay Checkout";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -398,6 +421,7 @@
 				DEVELOPMENT_TEAM = XGLU324D57;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ReepayCheckoutExample/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Reepay Checkout";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -497,6 +521,7 @@
 				DEVELOPMENT_TEAM = XGLU324D57;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ReepayCheckoutExample/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Reepay Checkout";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -589,6 +614,7 @@
 				DEVELOPMENT_TEAM = XGLU324D57;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ReepayCheckoutExample/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Reepay Checkout";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
