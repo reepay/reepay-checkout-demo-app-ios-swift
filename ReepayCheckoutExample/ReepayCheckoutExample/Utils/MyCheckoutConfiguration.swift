@@ -56,7 +56,7 @@ class MyCheckoutConfiguration {
         // Default font:
         // var textStyle = TextStyle(text: "Close payment", size: 15, weight: .semibold)
         // Custom font:
-        var textStyle = TextStyle(text: "Close payment", fontName: "ChakraPetch-Regular", size: nil)
+        var textStyle = TextStyle(text: "Close", fontName: "ChakraPetch-Regular", size: nil)
         textStyle.color = "0476BA"
         buttonStyle.textStyle = textStyle
 
