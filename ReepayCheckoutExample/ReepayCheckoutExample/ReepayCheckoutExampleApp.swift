@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct ReepayCheckoutExampleApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
         WindowGroup {
             MyNavigationView()
+                .onOpenURL { url in
+                    /// Listen to incoming URL from redirect back to app
+                    appDelegate.handleIncomingURL(url)
+                }
         }
     }
 }

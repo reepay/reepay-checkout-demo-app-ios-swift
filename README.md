@@ -7,11 +7,11 @@ This is an example of a "Checkout" with Reepay Checkout made with SwiftUI.
 This project requires following Flutter prerequisites:
 
 - [Install Xcode 15](https://developer.apple.com/xcode/)
-- [Reepay iOS SDK](https://github.com/reepay/reepay-ios-spm)
+- [Reepay iOS SDK](https://github.com/reepay/reepay-ios)
 
 ## Setup
 
-Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcframework` from [releases](https://github.com/reepay/reepay-ios-spm) or use "Add Package Dependencies..." in Xcode to fetch the Swift Package. You can find a setup guide on our [documentation page](https://optimize-docs.billwerk.com/docs/checkout-sdk-for-ios).
+Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcframework` from [releases](https://github.com/reepay/reepay-ios/releases) or use "Add Package Dependencies..." in Xcode to fetch the Swift Package. You can find a setup guide on our [documentation page](https://optimize-docs.billwerk.com/docs/checkout-sdk-for-ios).
 
 ## Table of Contents
 

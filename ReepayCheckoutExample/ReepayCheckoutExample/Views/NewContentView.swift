@@ -11,8 +11,6 @@ import SwiftUI
 
 @available(iOS 15, *)
 struct NewContentView: View {
-    @State var checkoutSheet: CheckoutSheet?
-
     @State var userEventPublisher: PassthroughSubject<UserEvent, Never>?
     @State var userEventCancellables = Set<AnyCancellable>()
 
@@ -25,6 +23,7 @@ struct NewContentView: View {
     @State private var showingAlert = false
     @State private var checkoutState: CheckoutState?
 
+    @State private var isListVisible = true
     @State private var selectedDismissButtonVerticalPosition: VerticalPosition = .above
     @State private var selectedDismissButtonHorizontalPosition: HorizontalPosition = .right
     @State private var selectedDismissButtonType: ButtonType = .iconText
@@ -33,16 +32,16 @@ struct NewContentView: View {
 
     @StateObject private var sessionModel = SessionModel()
 
-    func prepareCheckoutSheet() {
-        MyCheckoutConfiguration.shared.setConfiguration(id: sessionModel.id)
+    func prepareCheckoutSheet(id: String) {
+        MyCheckoutConfiguration.shared.setConfiguration(id: id)
         MyCheckoutConfiguration.shared.setCheckoutStyle(mode: selectedSheetMode)
         MyCheckoutConfiguration.shared.setAlertStyle()
         MyCheckoutConfiguration.shared.setIconTextButtonStyle(type: selectedDismissButtonType, buttonHorizontalPosition: selectedDismissButtonHorizontalPosition, buttonVerticalPosition: selectedDismissButtonVerticalPosition, iconHorizontalPosition: selectedDismissButtonIconHorizontalPosition)
 
         if let configuration = MyCheckoutConfiguration.shared.getConfiguration() {
-            checkoutSheet = CheckoutSheet(configuration: configuration)
+            AppDelegate.checkoutSheet = CheckoutSheet(configuration: configuration)
             setupSubscribers()
-            print("Prepared checkout for: \(sessionModel.id)")
+            print("Prepared checkout for: \(id)")
         } else {
             print("Error preparing checkout")
         }
@@ -100,14 +99,21 @@ struct NewContentView: View {
         }
         .listStyle(.plain)
         .padding(EdgeInsets(top: 50, leading: 25, bottom: 0, trailing: 25))
+        .transition(.opacity)
     }
 
     var body: some View {
         VStack {
-            configuration
+            if isListVisible {
+                configuration
+            }
             Button(action: {
-                prepareCheckoutSheet()
-                self.checkoutSheet?.present()
+                prepareCheckoutSheet(id: sessionModel.id)
+                AppDelegate.checkoutSheet?.present()
+
+                withAnimation {
+                    isListVisible.toggle()
+                }
             }) {
                 Label("Open Checkout", systemImage: "creditcard.fill")
                     .padding()
@@ -132,7 +138,7 @@ struct NewContentView: View {
 extension NewContentView {
     private func setupSubscribers() {
         if checkoutEventPublisher == nil {
-            guard let checkoutEventPublisher = checkoutSheet?.getCheckoutEventPublisher().eventPublisher else {
+            guard let checkoutEventPublisher = AppDelegate.checkoutSheet?.getCheckoutEventPublisher().eventPublisher else {
                 fatalError("Could not get Checkout Event Publisher from SDK")
             }
             self.checkoutEventPublisher = checkoutEventPublisher
@@ -144,19 +150,19 @@ extension NewContentView {
         }
 
         /// Subscribe specific checkut events:
-        checkoutSheet?.getCheckoutEventPublisher().acceptEventPublisher
+        AppDelegate.checkoutSheet?.getCheckoutEventPublisher().acceptEventPublisher
             .sink(receiveValue: { (_: CheckoutEvent) in })
             .store(in: &acceptEventCancellables)
-        checkoutSheet?.getCheckoutEventPublisher().cancelEventPublisher
+        AppDelegate.checkoutSheet?.getCheckoutEventPublisher().cancelEventPublisher
             .sink(receiveValue: { (_: CheckoutEvent) in })
             .store(in: &cancelEventCancellables)
-        checkoutSheet?.getCheckoutEventPublisher().closeEventPublisher
+        AppDelegate.checkoutSheet?.getCheckoutEventPublisher().closeEventPublisher
             .sink(receiveValue: { (_: CheckoutEvent) in })
             .store(in: &closeEventCancellables)
 
         /// Subscribe user events
         if userEventPublisher == nil {
-            guard let userEventPublisher = checkoutSheet?.getUserEventPublisher().eventPublisher else {
+            guard let userEventPublisher = AppDelegate.checkoutSheet?.getUserEventPublisher().eventPublisher else {
                 fatalError("Could not get User Event Publisher from SDK")
             }
             self.userEventPublisher = userEventPublisher
@@ -188,17 +194,19 @@ extension NewContentView {
             showingAlert = false
             print("Checkout has initiated")
         case CheckoutState.accept:
-            if let data = event.message.data, let invoice = data.invoice {
-                print("Invoice with handle '\(invoice)' has been paid")
-            }
-            checkoutSheet?.dismiss()
-            showingAlert = true
+            AppDelegate.checkoutSheet?.dismiss(animated: true, completion: {
+                if let data = event.message.data, let invoice = data.invoice {
+                    print("Invoice with handle '\(invoice)' has been paid")
+                }
+                showingAlert = true
+            })
         case CheckoutState.cancel:
-            if let data = event.message.data, let sessionId = data.id {
-                print("Session id '\(sessionId)' has been cancelled by user")
-            }
-            checkoutSheet?.dismiss()
-            showingAlert = true
+            AppDelegate.checkoutSheet?.dismiss(animated: true, completion: {
+                if let data = event.message.data, let sessionId = data.id {
+                    print("Session id '\(sessionId)' has been cancelled by user")
+                }
+                showingAlert = true
+            })
         case CheckoutState.close:
             showingAlert = false
         case CheckoutState.error:
@@ -211,8 +219,12 @@ extension NewContentView {
         /// Remove the references when events are final states
         if ![CheckoutState.`init`, CheckoutState.error].contains(event.state) {
             removeSubscribers()
-            checkoutSheet = nil
+            AppDelegate.checkoutSheet = nil
             print("🏁 - Final state: CheckoutState.\(event.state)")
+
+            withAnimation {
+                isListVisible.toggle()
+            }
         }
     }
 

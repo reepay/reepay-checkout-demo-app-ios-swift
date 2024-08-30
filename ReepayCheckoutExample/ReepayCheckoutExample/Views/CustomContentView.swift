@@ -13,6 +13,8 @@ import SwiftUI
 struct CustomContentView: View {
     @State private var isShowingSheet = false
     @State private var isShowingFullscreen = false
+    @State private var isPayButtonsVisible = false
+    @State private var isCreateSessionButtonVisible = true
     
     @State var checkoutSheet: CheckoutSheet?
     
@@ -29,7 +31,7 @@ struct CustomContentView: View {
     @StateObject private var sessionModel = SessionModel()
 
     func prepareCheckoutSheet(id: String) {
-        MyCheckoutConfiguration.shared.setConfiguration(id: sessionModel.id)
+        MyCheckoutConfiguration.shared.setConfiguration(id: id)
         MyCheckoutConfiguration.shared.setCheckoutStyle(mode: nil)
         MyCheckoutConfiguration.shared.setAlertStyle()
         
@@ -41,16 +43,33 @@ struct CustomContentView: View {
             print("Error preparing checkout")
         }
     }
-
+    
+    var createSessionButton: some View {
+        Button(action: {
+            prepareCheckoutSheet(id: sessionModel.id)
+            isPayButtonsVisible = true
+            isCreateSessionButtonVisible = false
+        }) {
+            Label("Create payment", systemImage: "plus")
+                .padding()
+                .foregroundColor(Color(hex: "006CFF"))
+                .background(.white)
+                .cornerRadius(10)
+        }
+    }
+    
     var body: some View {
         VStack {
             Spacer()
-            HStack {
-                if self.checkoutSheet != nil {
-                    sheetButton
+            VStack {
+                if isCreateSessionButtonVisible {
+                    createSessionButton
                 }
-                if self.checkoutSheet != nil {
-                    fullscreenButton
+                if isPayButtonsVisible {
+                    HStack {
+                        sheetButton
+                        fullscreenButton
+                    }
                 }
             }
             Spacer()
@@ -59,8 +78,6 @@ struct CustomContentView: View {
             Alert(title: Text("Checkout state"),
                   message: Text("Event: \(self.checkoutState?.toString ?? "No CheckoutState")"),
                   dismissButton: .default(Text("OK"), action: handleCheckoutStateClick))
-        }.onAppear {
-            prepareCheckoutSheet(id: sessionModel.id)
         }
     }
     
@@ -70,7 +87,6 @@ struct CustomContentView: View {
     
     var sheetButton: some View {
         Button(action: {
-            prepareCheckoutSheet(id: sessionModel.id)
             isShowingSheet.toggle()
         }) {
             Label("Sheet Pay", systemImage: "creditcard")
@@ -99,7 +115,8 @@ struct CustomContentView: View {
                 if let checkoutVC = self.checkoutSheet?.getCheckoutViewController() {
                     UIViewControllerWrapper(viewController: checkoutVC)
                 }
-            }.presentationDetents([.fraction(0.8)])
+            }
+            .presentationDetents([.fraction(0.8)])
         }
         .foregroundColor(.black)
         .frame(maxWidth: .infinity,
@@ -112,7 +129,6 @@ struct CustomContentView: View {
     
     var fullscreenButton: some View {
         Button(action: {
-            prepareCheckoutSheet(id: sessionModel.id)
             isShowingFullscreen.toggle()
         }) {
             Label("Fullscreen Pay", systemImage: "creditcard.fill")
@@ -140,8 +156,14 @@ struct CustomContentView: View {
     }
     
     func didDismiss() {
+        resetView()
         showingAlert = true
         removeSubscribers()
+    }
+    
+    func resetView() {
+        isCreateSessionButtonVisible = true
+        isPayButtonsVisible = false
     }
 }
 
