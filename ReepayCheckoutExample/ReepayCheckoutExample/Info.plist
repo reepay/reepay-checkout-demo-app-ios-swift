@@ -11,7 +11,7 @@
 			<string>com.reepay.demoapp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ReepayDemoApp</string>
+				<string>reepaydemoapp</string>
 			</array>
 		</dict>
 	</array>

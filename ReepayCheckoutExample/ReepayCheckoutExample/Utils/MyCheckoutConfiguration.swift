@@ -11,6 +11,19 @@ class MyCheckoutConfiguration {
     static let shared = MyCheckoutConfiguration()
     private var configuration: CheckoutConfiguration?
 
+    /// Set your default configuration to be used when returning to a closed app
+    func getDefaultConfiguration() -> CheckoutConfiguration? {
+        if var configuration = CheckoutConfiguration(sessionId: nil) {
+            configuration.checkoutStyle.dismissAlertStyle = .init()
+            configuration.checkoutStyle.dismissButtonStyle = ButtonStyle(type: .iconText)
+            configuration.checkoutStyle.dismissButtonStyle?.iconStyle = IconStyle()
+            configuration.checkoutStyle.dismissButtonStyle?.textStyle = TextStyle(text: "Close")
+            return configuration
+        } else {
+            return nil
+        }
+    }
+
     func getConfiguration() -> CheckoutConfiguration? {
         return configuration
     }
