@@ -186,13 +186,16 @@ extension NewContentView {
     }
 
     private func handleEvent(event: CheckoutEvent) {
-        print("Handling event: \(event.state)")
+        print("[NewContentView][handleEvent]: \(event.state)")
         checkoutState = event.state
 
         switch event.state {
         case CheckoutState.`init`:
             showingAlert = false
             print("Checkout has initiated")
+        case CheckoutState.open:
+            showingAlert = false
+            print("Checkout has opened")
         case CheckoutState.accept:
             AppDelegate.checkoutSheet?.dismiss(animated: true, completion: {
                 if let data = event.message.data, let invoice = data.invoice {
@@ -217,7 +220,7 @@ extension NewContentView {
         }
 
         /// Remove the references when events are final states
-        if ![CheckoutState.`init`, CheckoutState.error].contains(event.state) {
+        if ![CheckoutState.`init`, CheckoutState.open, CheckoutState.error].contains(event.state) {
             removeSubscribers()
             AppDelegate.checkoutSheet = nil
             print("🏁 - Final state: CheckoutState.\(event.state)")

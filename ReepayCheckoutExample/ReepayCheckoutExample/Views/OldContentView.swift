@@ -115,6 +115,9 @@ extension OldContentView {
         case CheckoutState.`init`:
             showingAlert = false
             print("Checkout has initiated")
+        case .open:
+            print("Checkout has opened")
+            showingAlert = false
         case CheckoutState.accept:
             checkoutSheet?.dismiss()
             showingAlert = true
