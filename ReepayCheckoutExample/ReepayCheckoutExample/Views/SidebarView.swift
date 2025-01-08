@@ -23,8 +23,11 @@ struct SidebarView: View {
             }
             if #available(iOS 16.4, *) {
                 NavigationLink(destination: MerchantContentView()) {
-                    Label("Custom Checkout", systemImage: "cart")
+                    Label("SDK Custom Checkout", systemImage: "cart")
                 }
+            }
+            NavigationLink(destination: WebViewContentView()) {
+                Label("No SDK Checkout", systemImage: "cart.badge.questionmark")
             }
         }
         .listStyle(SidebarListStyle())

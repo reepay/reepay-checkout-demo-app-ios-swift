@@ -64,3 +64,12 @@ struct MerchantContentView: View {
         }
     }
 }
+
+struct WebViewContentView: View {
+    var body: some View {
+        ZStack {
+            Color(hex: "01A387")
+            NoSdkContentView()
+        }
+    }
+}
