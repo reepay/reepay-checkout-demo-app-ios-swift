@@ -11,7 +11,6 @@ import SwiftUI
 struct MyWebView: UIViewRepresentable {
     let url: URL
 
-    // Coordinator to handle script messages and navigation
     class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler, WKScriptMessageHandlerWithReply {
         weak var webView: WKWebView?
 
