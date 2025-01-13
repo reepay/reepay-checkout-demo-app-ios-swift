@@ -22,6 +22,9 @@
 		B2DA780E2C32A21100E354D5 /* ChakraPetch-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2DA780B2C32A21100E354D5 /* ChakraPetch-Light.ttf */; };
 		B2DA780F2C32A21100E354D5 /* ChakraPetch-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2DA780C2C32A21100E354D5 /* ChakraPetch-Bold.ttf */; };
 		B2DA782E2C355A2E00E354D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA782D2C355A2E00E354D5 /* AppDelegate.swift */; };
+		B2F5032C2D3545F30070C020 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B263B3482D2E89EE009674F1 /* Constants.swift */; };
+		B2F5032D2D3545F70070C020 /* MyWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B263B3452D2D7DE2009674F1 /* MyWebView.swift */; };
+		B2F5032E2D3545FA0070C020 /* NoSdkContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B263B3412D2D7472009674F1 /* NoSdkContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +50,9 @@
 		B225B5B52BA89FC3009F3DDA /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		B225B5B72BA8A002009F3DDA /* OldContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldContentView.swift; sourceTree = "<group>"; };
 		B225B5B92BA8A08D009F3DDA /* UIVIewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerWrapper.swift; sourceTree = "<group>"; };
+		B263B3412D2D7472009674F1 /* NoSdkContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSdkContentView.swift; sourceTree = "<group>"; };
+		B263B3452D2D7DE2009674F1 /* MyWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWebView.swift; sourceTree = "<group>"; };
+		B263B3482D2E89EE009674F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B29C1F802C7C95C100435112 /* ReepayCheckoutExample.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ReepayCheckoutExample.entitlements; sourceTree = "<group>"; };
 		B2D5665C2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCheckoutConfiguration.swift; sourceTree = "<group>"; };
 		B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 		B225B5B12BA89EB6009F3DDA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B263B3482D2E89EE009674F1 /* Constants.swift */,
 				B225B5B22BA89EC7009F3DDA /* Color+HEX.swift */,
 				B225B5B92BA8A08D009F3DDA /* UIVIewControllerWrapper.swift */,
 			);
@@ -123,10 +130,12 @@
 		B225B5B42BA89F05009F3DDA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B263B3452D2D7DE2009674F1 /* MyWebView.swift */,
 				B225B5B52BA89FC3009F3DDA /* SidebarView.swift */,
 				B225B5B72BA8A002009F3DDA /* OldContentView.swift */,
 				B225B5A52BA89468009F3DDA /* NewContentView.swift */,
 				B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */,
+				B263B3412D2D7472009674F1 /* NoSdkContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,6 +252,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2F5032E2D3545FA0070C020 /* NoSdkContentView.swift in Sources */,
+				B2F5032D2D3545F70070C020 /* MyWebView.swift in Sources */,
+				B2F5032C2D3545F30070C020 /* Constants.swift in Sources */,
 				B2D5666B2BAC78AE00B0DDFE /* CustomContentView.swift in Sources */,
 				B225B5B32BA89EC7009F3DDA /* Color+HEX.swift in Sources */,
 				B225B5B62BA89FC3009F3DDA /* SidebarView.swift in Sources */,
@@ -293,7 +305,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.5;
+				CURRENT_PROJECT_VERSION = 1.1.6;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -357,7 +369,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.5;
+				CURRENT_PROJECT_VERSION = 1.1.6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -386,6 +398,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ReepayCheckoutExample/ReepayCheckoutExample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_ASSET_PATHS = "\"ReepayCheckoutExample/Preview Content\"";
@@ -407,6 +420,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.reepay.ReepayCheckoutExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -423,6 +437,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ReepayCheckoutExample/ReepayCheckoutExample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_ASSET_PATHS = "\"ReepayCheckoutExample/Preview Content\"";
@@ -444,6 +459,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.reepay.ReepayCheckoutExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -488,7 +504,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.5;
+				CURRENT_PROJECT_VERSION = 1.1.6;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -524,6 +540,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ReepayCheckoutExample/ReepayCheckoutExample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_ASSET_PATHS = "\"ReepayCheckoutExample/Preview Content\"";
@@ -545,6 +562,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.reepay.ReepayCheckoutExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -589,7 +607,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.5;
+				CURRENT_PROJECT_VERSION = 1.1.6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -618,6 +636,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ReepayCheckoutExample/ReepayCheckoutExample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_ASSET_PATHS = "\"ReepayCheckoutExample/Preview Content\"";
@@ -639,6 +658,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.reepay.ReepayCheckoutExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
