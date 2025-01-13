@@ -20,6 +20,7 @@ Upon having Xcode 16 installed, add latest version of `ReepayCheckoutSheet.xcfra
 - [Enums](#enums)
 - [Customize your own sheet](#customize-your-own-sheet)
 - [Deep Linking](#deep-linking)
+- [Native Bridge](#native-bridge)
 - [Demo](#demo)
 
 ## Classes
@@ -36,6 +37,9 @@ Upon having Xcode 16 installed, add latest version of `ReepayCheckoutSheet.xcfra
 
 ## Deep Linking
 [Deep Linking](https://optimize-docs.billwerk.com/docs/deep-linking-for-ios)
+
+## Native Bridge
+[Native Bridge](https://optimize-docs.billwerk.com/docs/checkout-native-bridge-communication-for-apps)
 
 ## Demo
 https://github.com/reepay/reepay-checkout-demo-app-ios-swift/assets/108516218/f70a7e8a-dcd4-470e-aeb2-165f390b7057
