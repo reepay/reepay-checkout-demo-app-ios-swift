@@ -9,10 +9,17 @@ import SwiftUI
 @preconcurrency import WebKit
 
 struct MyWebView: UIViewRepresentable {
+    @Binding var show: Bool
+
     let url: URL
 
     class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler, WKScriptMessageHandlerWithReply {
         weak var webView: WKWebView?
+        var parent: MyWebView
+        
+        init(_ parent: MyWebView) {
+            self.parent = parent
+        }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             print("WebView finished loading")
@@ -102,8 +109,10 @@ struct MyWebView: UIViewRepresentable {
                 print("ReepayCheckout closed")
             case "Accept":
                 print("Payment completed with: \(response)")
+                parent.show = false
             case "Cancel":
                 print("Payment cancelled with: \(response)")
+                parent.show = false
             default:
                 print("Unhandled event: \(String(describing: eventName))")
             }
@@ -111,7 +120,7 @@ struct MyWebView: UIViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        let coordinator = Coordinator()
+        let coordinator = Coordinator(self)
         return coordinator
     }
 

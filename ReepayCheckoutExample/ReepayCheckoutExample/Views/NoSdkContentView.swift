@@ -39,7 +39,7 @@ struct NoSdkContentView: View {
                     Spacer()
                 }.padding()
                 let url = "\(Constants.ReepayBaseURL)\(sessionModel.id)"
-                MyWebView(url: URL(string: url)!).frame(maxWidth: .infinity, maxHeight: .infinity)
+                MyWebView(show: $showWebView, url: URL(string: url)!).frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
         .foregroundColor(.black)
