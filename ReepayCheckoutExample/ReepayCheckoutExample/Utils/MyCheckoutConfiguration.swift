@@ -43,6 +43,7 @@ class MyCheckoutConfiguration {
         checkoutStyle.sheetHeightFraction = 0.7
         checkoutStyle.sheetDismissible = .withAlertOnChanges
         checkoutStyle.hideHeader = true
+        checkoutStyle.hideFooterCancel = false
 
         if var configuration = configuration {
             configuration.checkoutStyle = checkoutStyle
