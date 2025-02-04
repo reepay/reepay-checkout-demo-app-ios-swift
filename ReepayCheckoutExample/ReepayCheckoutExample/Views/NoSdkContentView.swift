@@ -9,8 +9,12 @@ import SwiftUI
 import WebKit
 
 struct NoSdkContentView: View {
-    @State private var showWebView = false
     @StateObject private var sessionModel = SessionModel()
+    
+    @State private var showWebView = false
+
+    @State var hideHeader: Bool = false
+    @State var hideFooterCancel: Bool = false
 
     var body: some View {
         VStack {
@@ -38,7 +42,7 @@ struct NoSdkContentView: View {
                         }
                     Spacer()
                 }.padding()
-                let url = "\(Constants.ReepayBaseURL)\(sessionModel.id)"
+                let url = "\(Constants.ReepayBaseURL)\(sessionModel.id)?hideHeader=\(hideHeader)&hideFooterCancel=\(hideFooterCancel)"
                 MyWebView(show: $showWebView, url: URL(string: url)!).frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
