@@ -6,12 +6,12 @@ This is an example of a "Checkout" with Reepay Checkout made with SwiftUI.
 
 This project requires following Flutter prerequisites:
 
-- [Install Xcode 15](https://developer.apple.com/xcode/)
+- [Install Xcode 16](https://developer.apple.com/xcode/)
 - [Reepay iOS SDK](https://github.com/reepay/reepay-ios)
 
 ## Setup
 
-Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcframework` from [releases](https://github.com/reepay/reepay-ios/releases) or use "Add Package Dependencies..." in Xcode to fetch the Swift Package. You can find a setup guide on our [documentation page](https://optimize-docs.billwerk.com/docs/checkout-sdk-for-ios).
+Upon having Xcode 16 installed, add latest version of `ReepayCheckoutSheet.xcframework` from [releases](https://github.com/reepay/reepay-ios/releases) or use "Add Package Dependencies..." in Xcode to fetch the Swift Package. You can find a setup guide on our [documentation page](https://optimize-docs.billwerk.com/docs/checkout-sdk-for-ios).
 
 ## Table of Contents
 
@@ -19,6 +19,8 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
 - [Structs](#structs)
 - [Enums](#enums)
 - [Customize your own sheet](#customize-your-own-sheet)
+- [Deep Linking](#deep-linking)
+- [Native Bridge](#native-bridge)
 - [Demo](#demo)
 
 ## Classes
@@ -32,6 +34,12 @@ Upon having Xcode 15 installed, add latest version of `ReepayCheckoutSheet.xcfra
 
 ## Customize your own sheet
 [Custom sheet](https://optimize-docs.billwerk.com/docs/create-custom-sheet)
+
+## Deep Linking
+[Deep Linking](https://optimize-docs.billwerk.com/docs/deep-linking-for-ios)
+
+## Native Bridge
+[Native Bridge](https://optimize-docs.billwerk.com/docs/checkout-native-bridge-communication-for-apps)
 
 ## Demo
 https://github.com/reepay/reepay-checkout-demo-app-ios-swift/assets/108516218/f70a7e8a-dcd4-470e-aeb2-165f390b7057
