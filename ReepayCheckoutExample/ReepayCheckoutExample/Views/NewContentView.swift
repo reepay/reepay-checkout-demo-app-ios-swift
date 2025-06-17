@@ -186,8 +186,12 @@ extension NewContentView {
     }
 
     private func handleEvent(event: CheckoutEvent) {
-        print("[NewContentView][handleEvent]: \(event.state)")
+        print("[NewContentView] [handleEvent]: \(event.state)")
         checkoutState = event.state
+
+        if !event.metadata.isEmpty {
+            handleMetadata(event.metadata)
+        }
 
         switch event.state {
         case CheckoutState.`init`:
@@ -238,5 +242,9 @@ extension NewContentView {
         case .cardInputChange:
             print("Checkout card fields has been edited")
         }
+    }
+
+    private func handleMetadata(_ metadata: [String: Any]) {
+        print("[NewContentView] [handleMetadata]: \(metadata)")
     }
 }

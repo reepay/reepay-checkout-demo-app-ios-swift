@@ -17,6 +17,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Pacifico-Regular.ttf</string>
 		<string>ChakraPetch-Bold.ttf</string>
 		<string>ChakraPetch-Light.ttf</string>
 		<string>ChakraPetch-Regular.ttf</string>
