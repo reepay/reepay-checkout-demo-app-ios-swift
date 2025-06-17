@@ -25,6 +25,7 @@
 		B2F5032C2D3545F30070C020 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B263B3482D2E89EE009674F1 /* Constants.swift */; };
 		B2F5032D2D3545F70070C020 /* MyWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B263B3452D2D7DE2009674F1 /* MyWebView.swift */; };
 		B2F5032E2D3545FA0070C020 /* NoSdkContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B263B3412D2D7472009674F1 /* NoSdkContentView.swift */; };
+		B2F8F0442DF83D3800966224 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2F8F0432DF83D3800966224 /* Pacifico-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +63,7 @@
 		B2DA780B2C32A21100E354D5 /* ChakraPetch-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChakraPetch-Light.ttf"; sourceTree = "<group>"; };
 		B2DA780C2C32A21100E354D5 /* ChakraPetch-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChakraPetch-Bold.ttf"; sourceTree = "<group>"; };
 		B2DA782D2C355A2E00E354D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B2F8F0432DF83D3800966224 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				B2DA780C2C32A21100E354D5 /* ChakraPetch-Bold.ttf */,
 				B2DA780B2C32A21100E354D5 /* ChakraPetch-Light.ttf */,
 				B2DA780A2C32A21100E354D5 /* ChakraPetch-Regular.ttf */,
+				B2F8F0432DF83D3800966224 /* Pacifico-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				B2DA780E2C32A21100E354D5 /* ChakraPetch-Light.ttf in Resources */,
 				B2DA780F2C32A21100E354D5 /* ChakraPetch-Bold.ttf in Resources */,
 				B225B5AB2BA8946B009F3DDA /* Preview Assets.xcassets in Resources */,
+				B2F8F0442DF83D3800966224 /* Pacifico-Regular.ttf in Resources */,
 				B225B5A82BA8946B009F3DDA /* Assets.xcassets in Resources */,
 				B2DA780D2C32A21100E354D5 /* ChakraPetch-Regular.ttf in Resources */,
 			);
@@ -305,7 +309,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.6;
+				CURRENT_PROJECT_VERSION = 1.1.8;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -369,7 +373,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.6;
+				CURRENT_PROJECT_VERSION = 1.1.8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -504,7 +508,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.6;
+				CURRENT_PROJECT_VERSION = 1.1.8;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -607,7 +611,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.6;
+				CURRENT_PROJECT_VERSION = 1.1.8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

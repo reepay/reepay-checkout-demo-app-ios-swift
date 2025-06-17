@@ -38,7 +38,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     private func presentCheckoutReturnUrl(returnUrl: String) {
         if let sheet = AppDelegate.checkoutSheet {
             /// CheckoutSheet is still open, load return URL
-            sheet.present(url: returnUrl)
+            if let viewController = sheet.getCheckoutViewController() {
+                if viewController.presentedViewController == nil {
+                    sheet.present(url: returnUrl)
+                } else {
+                    /// Only load return URL when sheet is already presented
+                    viewController.setReturnUrl(url: returnUrl)
+                }
+            }
         } else {
             if let configuration = MyCheckoutConfiguration.shared.getConfiguration() {
                 /// CheckoutSheet has been closed, reuse existing configuration
