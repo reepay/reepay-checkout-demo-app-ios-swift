@@ -15,6 +15,8 @@
 		B225B5B62BA89FC3009F3DDA /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225B5B52BA89FC3009F3DDA /* SidebarView.swift */; };
 		B225B5B82BA8A002009F3DDA /* OldContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225B5B72BA8A002009F3DDA /* OldContentView.swift */; };
 		B225B5BA2BA8A08D009F3DDA /* UIVIewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225B5B92BA8A08D009F3DDA /* UIVIewControllerWrapper.swift */; };
+		B2C13CC82EA8F87A0038DC2A /* WKWebView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C13CC52EA8F85A0038DC2A /* WKWebView+Extension.swift */; };
+		B2C13CCA2EA8F9260038DC2A /* MyWebView+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C13CC92EA8F9190038DC2A /* MyWebView+Coordinator.swift */; };
 		B2D5665D2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5665C2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift */; };
 		B2D5666B2BAC78AE00B0DDFE /* CustomContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */; };
 		B2D566702BAC9BF800B0DDFE /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5666F2BAC9BF800B0DDFE /* SessionModel.swift */; };
@@ -55,6 +57,8 @@
 		B263B3452D2D7DE2009674F1 /* MyWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWebView.swift; sourceTree = "<group>"; };
 		B263B3482D2E89EE009674F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B29C1F802C7C95C100435112 /* ReepayCheckoutExample.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ReepayCheckoutExample.entitlements; sourceTree = "<group>"; };
+		B2C13CC52EA8F85A0038DC2A /* WKWebView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+Extension.swift"; sourceTree = "<group>"; };
+		B2C13CC92EA8F9190038DC2A /* MyWebView+Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyWebView+Coordinator.swift"; sourceTree = "<group>"; };
 		B2D5665C2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCheckoutConfiguration.swift; sourceTree = "<group>"; };
 		B2D5666A2BAC78AE00B0DDFE /* CustomContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentView.swift; sourceTree = "<group>"; };
 		B2D5666F2BAC9BF800B0DDFE /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
@@ -124,7 +128,9 @@
 			children = (
 				B263B3482D2E89EE009674F1 /* Constants.swift */,
 				B225B5B22BA89EC7009F3DDA /* Color+HEX.swift */,
+				B2C13CC92EA8F9190038DC2A /* MyWebView+Coordinator.swift */,
 				B225B5B92BA8A08D009F3DDA /* UIVIewControllerWrapper.swift */,
+				B2C13CC52EA8F85A0038DC2A /* WKWebView+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -265,7 +271,9 @@
 				B225B5A62BA89468009F3DDA /* NewContentView.swift in Sources */,
 				B2D5665D2BA9DF3200B0DDFE /* MyCheckoutConfiguration.swift in Sources */,
 				B225B5B82BA8A002009F3DDA /* OldContentView.swift in Sources */,
+				B2C13CCA2EA8F9260038DC2A /* MyWebView+Coordinator.swift in Sources */,
 				B225B5BA2BA8A08D009F3DDA /* UIVIewControllerWrapper.swift in Sources */,
+				B2C13CC82EA8F87A0038DC2A /* WKWebView+Extension.swift in Sources */,
 				B225B5A42BA89468009F3DDA /* ReepayCheckoutExampleApp.swift in Sources */,
 				B2DA782E2C355A2E00E354D5 /* AppDelegate.swift in Sources */,
 				B2D566702BAC9BF800B0DDFE /* SessionModel.swift in Sources */,

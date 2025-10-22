@@ -16,7 +16,8 @@ struct MyWebView: UIViewRepresentable {
     class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler, WKScriptMessageHandlerWithReply {
         weak var webView: WKWebView?
         var parent: MyWebView
-        
+        var shouldNavigate: Bool = true
+
         init(_ parent: MyWebView) {
             self.parent = parent
         }
@@ -74,7 +75,7 @@ struct MyWebView: UIViewRepresentable {
                 /// Let ReepayCheckout know a webview is being used and should send webview events to my app:
                 reply = [
                     "isWebView": true,
-                    "userAgent": "Unknown",
+                    "userAgent": "AppleWebKit",
                 ]
             case "card_input_change":
                 /// Let ReepayCheckout know webview has changed/touched by user and stop sending further "card_input_change" events:
@@ -110,6 +111,9 @@ struct MyWebView: UIViewRepresentable {
             case "Accept":
                 print("Payment completed with: \(response)")
                 parent.show = false
+                
+                /// Stop navigation after accept event to prevent webview from redirecting to accept URL:
+                // shouldNavigate = false
             case "Cancel":
                 print("Payment cancelled with: \(response)")
                 parent.show = false
