@@ -8,18 +8,18 @@
 import ObjectiveC
 import WebKit
 
-private var shouldNavigateKey: UInt8 = 0
+private var shouldHandleNavigationKey: UInt8 = 0
 
 extension WKWebView {
-    public var shouldNavigate: Bool {
+    public var shouldHandleNavigation: Bool {
         get {
-            return objc_getAssociatedObject(self, &shouldNavigateKey)
-                as? Bool ?? true
+            return (objc_getAssociatedObject(self, &shouldHandleNavigationKey)
+                as? NSNumber)?.boolValue ?? true
         }
         set {
             objc_setAssociatedObject(
                 self,
-                &shouldNavigateKey,
+                &shouldHandleNavigationKey,
                 newValue,
                 .OBJC_ASSOCIATION_RETAIN_NONATOMIC
             )

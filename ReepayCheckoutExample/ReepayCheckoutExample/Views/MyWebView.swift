@@ -16,14 +16,34 @@ struct MyWebView: UIViewRepresentable {
     class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler, WKScriptMessageHandlerWithReply {
         weak var webView: WKWebView?
         var parent: MyWebView
-        var shouldNavigate: Bool = true
+
+        /// URL of the load we started ourselves, so we don't cancel it when navigation handling is off.
+        var pendingProgrammaticURL: URL?
+
+        /// Our current load. Stays set until it finishes/fails so its redirect hops are allowed too.
+        var sdkInitiatedNavigation: WKNavigation?
 
         init(_ parent: MyWebView) {
             self.parent = parent
         }
 
+        /// Load a request while tracking it as our own, mirroring the SDK's `loadInternally`.
+        @discardableResult
+        func loadInternally(_ request: URLRequest, in webView: WKWebView) -> WKNavigation? {
+            pendingProgrammaticURL = request.url
+            let navigation = webView.load(request)
+            sdkInitiatedNavigation = navigation
+            return navigation
+        }
+
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             print("WebView finished loading")
+
+            // Clear our load state so it doesn't carry over to later page navigations.
+            pendingProgrammaticURL = nil
+            if navigation == sdkInitiatedNavigation {
+                sdkInitiatedNavigation = nil
+            }
         }
 
         // Handle WKScriptMessageHandlerWithReply (iOS 17+)
@@ -113,7 +133,7 @@ struct MyWebView: UIViewRepresentable {
                 parent.show = false
                 
                 /// Stop navigation after accept event to prevent webview from redirecting to accept URL:
-                // shouldNavigate = false
+                // webView?.shouldHandleNavigation = false
             case "Cancel":
                 print("Payment cancelled with: \(response)")
                 parent.show = false
@@ -151,6 +171,6 @@ struct MyWebView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.load(URLRequest(url: url))
+        context.coordinator.loadInternally(URLRequest(url: url), in: uiView)
     }
 }
